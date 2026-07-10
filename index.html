@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyvroTech PDVIA - Sistema de PDV com Inteligência Artificial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00D4FF;
+            --primary-dark: #0099CC;
+            --primary-light: #66E5FF;
+            --secondary: #FF6B6B;
+            --accent: #7C3AED;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --dark: #0A0E1A;
+            --dark-light: #1A1F35;
+            --gray: #8892A8;
+            --light-gray: #F0F4FF;
+            --white: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 30px 80px rgba(0, 212, 255, 0.15);
+            --radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--secondary), #FF4444);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 18px;
+        }
+
+        /* ============================================
+           NAVBAR
+           ============================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 14, 26, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-brand .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--dark);
+        }
+
+        .nav-brand span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-brand small {
+            font-size: 12px;
+            font-weight: 400;
+            -webkit-text-fill-color: var(--gray);
+            background: none;
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            padding: 160px 0 80px;
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
+                        radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
+                        var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge i {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title .highlight-ia {
+            background: linear-gradient(135deg, var(--secondary), #FF8E53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 500px;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* ============================================
+           HERO IMAGE - PDV SIMULATOR
+           ============================================ */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdv-simulator {
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius);
+            padding: 24px;
+            position: relative;
+            background: linear-gradient(145deg, #141B2D, #0A0E1A);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .pdv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 16px;
+        }
+
+        .pdv-header .store {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        .pdv-header .time {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .pdv-screen {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            min-height: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .pdv-screen .item {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 14px;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .pdv-screen .item:last-child {
+            border-bottom: none;
+        }
+
+        .pdv-screen .item .price {
+            color: var(--primary);
+        }
+
+        .pdv-screen .total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+            margin-top: 12px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .pdv-screen .total .amount {
+            color: var(--primary);
+        }
+
+        .pdv-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .pdv-actions button {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            color: var(--gray);
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .pdv-actions button:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+
+        .pdv-actions .btn-pagar {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            border: none;
+            font-weight: 700;
+        }
+
+        .pdv-actions .btn-pagar:hover {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            transform: scale(1.02);
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--white);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-element i {
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .element-1 {
+            top: -20px;
+            right: -20px;
+            animation-delay: 0.5s;
+        }
+
+        .element-2 {
+            bottom: -20px;
+            left: -20px;
+            animation-delay: 1s;
+        }
+
+        .element-3 {
+            top: 50%;
+            right: -60px;
+            animation-delay: 1.5s;
+            background: rgba(255, 107, 107, 0.1);
+            border-color: rgba(255, 107, 107, 0.2);
+        }
+
+        .element-3 i {
+            color: var(--secondary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ============================================
+           AI BADGE ANIMATED
+           ============================================ */
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-left: 8px;
+        }
+
+        .ai-badge i {
+            font-size: 12px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           VIDEO SECTION
+           ============================================ */
+        .video-section {
+            padding: 80px 0;
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: #000;
+        }
+
+        .video-placeholder {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: linear-gradient(135deg, #0A0E1A, #1A1F35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .video-placeholder .play-btn {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary);
+            transition: var(--transition);
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-placeholder .play-btn:hover {
+            background: rgba(0, 212, 255, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .video-placeholder .video-overlay-text {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .video-placeholder .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .video-placeholder .bg-pattern .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .video-section .video-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .video-section .video-title h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .video-section .video-title p {
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .video-section .video-title .highlight {
+            color: var(--primary);
+        }
+
+        /* ============================================
+           LOGOS
+           ============================================ */
+        .logos {
+            padding: 60px 0;
+            background: var(--dark-light);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .logos-title {
+            text-align: center;
+            color: var(--gray);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+        }
+
+        .logos-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .logos-grid i {
+            font-size: 36px;
+            color: var(--gray);
+            opacity: 0.2;
+            transition: var(--transition);
+        }
+
+        .logos-grid i:hover {
+            opacity: 0.8;
+            color: var(--primary);
+        }
+
+        /* ============================================
+           FEATURES
+           ============================================ */
+        .features {
+            padding: 100px 0;
+            background: var(--dark);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 6px 18px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px 32px;
+            background: var(--dark-light);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .feature-card .feature-tag {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(124, 58, 237, 0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+
+        /* ============================================
+           PRICING - PLANOS
+           ============================================ */
+        .pricing {
+            padding: 100px 0;
+            background: var(--dark-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--dark);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pricing-card .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+            color: var(--dark);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card .plan-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .pricing-card .plan-icon.prata {
+            color: var(--silver);
+        }
+
+        .pricing-card .plan-icon.ouro {
+            color: var(--gold);
+        }
+
+        .pricing-card .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .plan-name.prata {
+            color: var(--silver);
+        }
+
+        .pricing-card .plan-name.ouro {
+            color: var(--gold);
+        }
+
+        .pricing-card .plan-price {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 16px 0 8px;
+        }
+
+        .pricing-card .plan-price .currency {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .pricing-card .plan-price .period {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .pricing-card .plan-description {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card .plan-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card .plan-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .pricing-card .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-card .plan-features li i {
+            font-size: 16px;
+        }
+
+        .pricing-card .plan-features li .fa-check {
+            color: #00FF88;
+        }
+
+        .pricing-card .plan-features li .fa-times {
+            color: var(--gray);
+            opacity: 0.3;
+        }
+
+        .pricing-card .plan-features li .fa-robot {
+            color: var(--accent);
+        }
+
+        .pricing-card .plan-features li .fa-star {
+            color: var(--gold);
+        }
+
+        .pricing-card .plan-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 16px;
+            font-size: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-card .plan-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--dark);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--dark-light);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 212, 255, 0.1);
+            box-shadow: var(--shadow);
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 16px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+        }
+
+        .testimonial-author strong {
+            display: block;
+            font-size: 15px;
+            color: var(--white);
+        }
+
+        .testimonial-author span {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* ============================================
+           CTA
+           ============================================ */
+        .cta {
+            padding: 100px 0;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
+                        var(--dark);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 32px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 60px 0 30px;
+            background: var(--dark-light);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--gray);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo-icon {
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .footer-brand span {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--white);
+            margin-top: 8px;
+        }
+
+        .footer-brand span small {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        .footer-brand p {
+            margin: 12px 0 20px;
+            max-width: 300px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            transition: var(--transition);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .footer-links ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+
+            .hero-subtitle {
+                margin: 0 auto 32px;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .pdv-simulator {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .floating-element {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--dark-light);
+                flex-direction: column;
+                justify-content: center;
+                padding: 40px;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                gap: 24px;
+                border-left: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 30px;
+            }
+
+            .cta-content h2 {
+                font-size: 30px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pricing-card {
+                padding: 32px 24px;
+            }
+
+            .pricing-card .plan-price {
+                font-size: 36px;
+            }
+
+            .video-section .video-title h2 {
+                font-size: 28px;
+            }
+
+            .video-placeholder .play-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 12px;
+                align-items: center;
+            }
+
+            .stat {
+                align-items: center;
+            }
+
+            .pdv-simulator {
+                padding: 16px;
+            }
+
+            .pdv-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pdv-actions .btn-pagar {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+    NAVBAR
+    ========================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#" class="nav-brand">
+                <div class="logo-icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <div>
+                    CyvroTech
+                    <small>PDV<sup>IA</sup></small>
+                </div>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#video">Vídeo</a></li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#" class="btn-outline" style="padding: 8px 20px; font-size: 14px;">Contato</a></li>
+                <li><a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 14px;">Teste Grátis</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+    HERO
+    ========================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-robot"></i>
+                    IA Generativa integrada
+                    <span class="ai-badge"><i class="fas fa-brain"></i> v3.0</span>
+                </div>
+                <h1 class="hero-title">
+                    O futuro do<br>
+                    <span class="highlight">PDV com IA</span><br>
+                    <span class="highlight-ia">já chegou</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A CyvroTech PDV<sup>IA</sup> é o sistema de ponto de venda mais inteligente do mercado. 
+                    Com inteligência artificial integrada, previsão de demanda, análise de perfil de cliente 
+                    e automação total do seu negócio.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary btn-large">
+                        <i class="fas fa-rocket"></i> Teste Grátis
+                    </a>
+                    <a href="#" class="btn-outline btn-large">
+                        <i class="fas fa-play-circle"></i> Ver Demo
+                    </a>
+                    <a href="#" class="btn-secondary btn-large">
+                        <i class="fas fa-whatsapp"></i> Falar com Especialista
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">5K+</span>
+                        <span class="stat-label">Lojas confiam</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Satisfação</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Avaliação média</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">+47%</span>
+                        <span class="stat-label">Aumento em vendas</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="pdv-simulator">
+                    <div class="pdv-header">
+                        <span class="store"><i class="fas fa-store"></i> Minha Loja</span>
+                        <span class="time"><i class="far fa-clock"></i> 14:32</span>
+                    </div>
+                    <div class="pdv-screen" id="pdvScreen">
+                        <div class="item">
+                            <span>Produto 1 - Camiseta</span>
+                            <span class="price">R$ 49,90</span>
+                        </div>
+                        <div class="item">
+                            <span>Produto 2 - Tênis</span>
+                            <span class="price">R$ 199,90</span>
+                        </div>
+                        <div class="item">
+                            <span>Produto 3 - Boné</span>
+                            <span class="price">R$ 39,90</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span class="amount" id="totalAmount">R$ 289,70</span>
+                        </div>
+                    </div>
+                    <div class="pdv-actions">
+                        <button><i class="fas fa-plus"></i> Add</button>
+                        <button><i class="fas fa-edit"></i> Qtd</button>
+                        <button><i class="fas fa-trash"></i> Rem</button>
+                        <button><i class="fas fa-tag"></i> Desc</button>
+                        <button class="btn-pagar" id="btnPagar">
+                            <i class="fas fa-check"></i> Pagar com IA
+                        </button>
+                        <button><i class="fas fa-print"></i> NFCe</button>
+                    </div>
+                </div>
+                <div class="floating-element element-1">
+                    <i class="fas fa-robot"></i>
+                    <span>IA Prevê demanda</span>
+                </div>
+                <div class="floating-element element-2">
+                    <i class="fas fa-chart-line"></i>
+                    <span>+32% eficiência</span>
+                </div>
+                <div class="floating-element element-3">
+                    <i class="fas fa-users"></i>
+                    <span>Perfil de cliente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    VIDEO SECTION
+    ========================================== -->
+    <section id="video" class="video-section">
+        <div class="container">
+            <div class="video-title">
+                <span class="section-tag"><i class="fas fa-play-circle"></i> Demonstração</span>
+                <h2>Veja o sistema em <span class="highlight">ação</span></h2>
+                <p>Assista ao vídeo e descubra como a IA pode transformar seu negócio</p>
+            </div>
+            <div class="video-wrapper">
+                <div class="video-placeholder" id="videoPlaceholder" onclick="playVideo()">
+                    <div class="bg-pattern">
+                        <div class="grid"></div>
+                    </div>
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay-text">
+                        <i class="fas fa-film"></i> Clique para assistir à demonstração
+                    </div>
+                    <video id="demoVideo" style="display:none; width:100%; height:auto;" controls>
+                        <source src="pdv.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeo.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    LOGOS
+    ========================================== -->
+    <section class="logos">
+        <div class="container">
+            <p class="logos-title">Empresas que já estão usando a IA da CyvroTech</p>
+            <div class="logos-grid">
+                <i class="fas fa-store-alt"></i>
+                <i class="fas fa-tshirt"></i>
+                <i class="fas fa-pizza-slice"></i>
+                <i class="fas fa-medkit"></i>
+                <i class="fas fa-tools"></i>
+                <i class="fas fa-baby"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FEATURES
+    ========================================== -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-microchip"></i> Inteligência Artificial</span>
+                <h2>O PDV mais <span style="color: var(--primary);">inteligente</span> do Brasil</h2>
+                <p>Recursos que vão além do tradicional, com IA para impulsionar suas vendas</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>IA de Previsão de Demanda</h3>
+                    <p>Prevê o que vai vender mais em cada dia, horário e estação, otimizando seu estoque.</p>
+                    <span class="feature-tag"><i class="fas fa-robot"></i> IA Exclusiva</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-tag"></i></div>
+                    <h3>Perfil de Cliente com IA</h3>
+                    <p>Identifica padrões de compra e sugere produtos ideais para cada cliente em tempo real.</p>
+                    <span class="feature-tag"><i class="fas fa-robot"></i> IA Exclusiva</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Assistente Virtual</h3>
+                    <p>Atendimento automático com IA para tirar dúvidas, fazer upsell e agilizar o checkout.</p>
+                    <span class="feature-tag"><i class="fas fa-robot"></i> IA Exclusiva</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Dashboard Inteligente</h3>
+                    <p>Métricas em tempo real com insights gerados por IA para decisões mais assertivas.</p>
+                    <span class="feature-tag"><i class="fas fa-chart-line"></i> Analytics</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>PDV Mobile</h3>
+                    <p>Use no tablet ou smartphone com sincronização em tempo real e IA nativa.</p>
+                    <span class="feature-tag"><i class="fas fa-mobile"></i> Multi-plataforma</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Segurança com IA</h3>
+                    <p>Detecção de fraudes e anomalias em tempo real com machine learning.</p>
+                    <span class="feature-tag"><i class="fas fa-shield"></i> Proteção total</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    PRICING - PLANOS
+    ========================================== -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-tags"></i> Planos</span>
+                <h2>Escolha o plano <span style="color: var(--primary);">ideal</span> para seu negócio</h2>
+                <p>Comece com 15 dias grátis em qualquer plano. Cancele quando quiser.</p>
+            </div>
+            <div class="pricing-grid">
+             <!--    
+                <div class="pricing-card prata">
+                    <div class="plan-icon prata"><i class="fas fa-crown"></i></div>
+                    <h3 class="plan-name prata">Prata</h3>
+                    <div class="plan-price">
+                        <span class="currency">R$</span> 129,99 <span class="period">/mês</span>
+                    </div>
+                    <p class="plan-description">Perfeito para pequenos negócios que querem começar com IA</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> PDV Completo</li>
+                        <li><i class="fas fa-check"></i> Gestão de Estoque</li>
+                        <li><i class="fas fa-check"></i> Relatórios Básicos</li>
+                        <li><i class="fas fa-check"></i> Suporte por Email</li>
+                        <li><i class="fas fa-robot"></i> IA de Previsão de Demanda</li>
+                        <li><i class="fas fa-times"></i> Perfil de Cliente com IA</li>
+                        <li><i class="fas fa-times"></i> Assistente Virtual</li>
+                        <li><i class="fas fa-times"></i> Suporte Prioritário</li>
+                    </ul>
+                    <a href="#" class="plan-btn">
+                        <i class="fas fa-rocket"></i> Começar Grátis
+                    </a>
+                </div> -->
+
+                <!-- PLANO OURO -->
+                <div class="pricing-card ouro">
+                    <div class="popular-badge"><i class="fas fa-star"></i> Mais Popular</div>
+                    <div class="plan-icon ouro"><i class="fas fa-crown"></i></div>
+                    <h3 class="plan-name ouro">Ouro</h3>
+                    <div class="plan-price">
+                        <span class="currency">R$</span> 129,99 <span class="period">/mês</span>
+                    </div>
+                    <p class="plan-description">Para negócios que querem dominar o mercado com IA avançada</p>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> PDV Completo</li>
+                        <li><i class="fas fa-check"></i> Gestão de Estoque Avançada</li>
+                        <li><i class="fas fa-check"></i> Relatórios com IA</li>
+                        <li><i class="fas fa-check"></i> Suporte Prioritário 24/7</li>
+                        <li><i class="fas fa-robot"></i> IA de Previsão de Demanda</li>
+                        <li><i class="fas fa-user-tag"></i> Perfil de Cliente com IA</li>
+                        <li><i class="fas fa-robot"></i> Assistente Virtual</li>
+                        <li><i class="fas fa-star"></i> Análise de Sentimento do Cliente</li>
+                        <li><i class="fas fa-star"></i> Integração com Marketplaces</li>
+                        <li><i class="fas fa-star"></i> Dashboard Personalizado</li>
+                    </ul>
+                    <a href="#" class="plan-btn">
+                        <i class="fas fa-gem"></i> Começar Grátis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    TESTIMONIALS
+    ========================================== -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-quote-left"></i> Depoimentos</span>
+                <h2>O que nossos clientes dizem sobre a <span style="color: var(--primary);">IA</span></h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"A IA da CyvroTech prevê com 95% de precisão o que vou vender. Reduzi meu estoque em 30% e aumentei as vendas em 47%!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Carlos+Silva&background=00D4FF&color=0A0E1A" alt="Carlos Silva">
+                        <div>
+                            <strong>Carlos Silva</strong>
+                            <span>Rede de Lojas Silva & Cia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"O assistente virtual com IA revolucionou nosso atendimento. Nossos vendedores agora focam em vender, enquanto a IA cuida do resto."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Mariana+Oliveira&background=00D4FF&color=0A0E1A" alt="Mariana Oliveira">
+                        <div>
+                            <strong>Mariana Oliveira</strong>
+                            <span>Gerente, Fashion Store</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"A detecção de fraudes com IA já nos salvou de prejuízos enormes. É uma segurança que nenhum outro PDV oferece."</p>
+                    <div class="testimonial-author">
+                        <img src="https://ui-avatars.com/api/?name=Rafael+Almeida&background=00D4FF&color=0A0E1A" alt="Rafael Almeida">
+                        <div>
+                            <strong>Rafael Almeida</strong>
+                            <span>CEO, TechRetail</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    CTA
+    ========================================== -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para vender <span style="color: var(--primary);">com inteligência</span>?</h2>
+                <p>Junte-se a mais de 100 lojas que já estão usando a IA da CyvroTech PDV<sup>IA</sup></p>
+                <div class="cta-actions">
+                    <a href="#" class="btn-primary btn-large">
+                        <i class="fas fa-gem"></i> Começar Agora
+                    </a>
+                    <a href="#" class="btn-secondary btn-large">
+                        <i class="fas fa-calendar-alt"></i> Agendar Demonstração
+                    </a>
+                    <a href="#" class="btn-outline btn-large">
+                        <i class="fas fa-phone"></i> (11) 99999-9999
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    FOOTER
+    ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo-icon">
+                        <i class="fas fa-cash-register"></i>
+                    </div>
+                    <span>CyvroTech <small>PDV<sup>IA</sup></small></span>
+                    <p>O sistema de PDV mais inteligente do Brasil. Transforme sua loja com o poder da inteligência artificial.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Produto</h4>
+                    <ul>
+                        <li><a href="#">Recursos IA</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#">Integrações</a></li>
+                        <li><a href="#">API</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                        <li><a href="#">Documentação IA</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CyvroTech PDV<sup>IA</sup>. Todos os direitos reservados. <span style="color: var(--gray); font-size: 12px;">Feito com <i class="fas fa-heart" style="color: var(--secondary);"></i></span></p>
+                <div class="footer-legal">
+                    <a href="#">Privacidade</a>
+                    <a href="#">Termos</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">LGPD</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+    JAVASCRIPT
+    ========================================== -->
+    <script>
+        // =============================================
+        // MOBILE MENU
+        // =============================================
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // =============================================
+        // NAVBAR SCROLL EFFECT
+        // =============================================
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // =============================================
+        // SMOOTH SCROLL
+        // =============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // =============================================
+        // VIDEO PLAYER
+        // =============================================
+        function playVideo() {
+            const placeholder = document.getElementById('videoPlaceholder');
+            const video = document.getElementById('demoVideo');
+            
+            // Esconde o placeholder e mostra o vídeo
+            placeholder.style.paddingBottom = '0';
+            placeholder.style.background = '#000';
+            video.style.display = 'block';
+            
+            // Esconde os elementos do placeholder
+            const playBtn = placeholder.querySelector('.play-btn');
+            const overlayText = placeholder.querySelector('.video-overlay-text');
+            const bgPattern = placeholder.querySelector('.bg-pattern');
+            
+            if (playBtn) playBtn.style.display = 'none';
+            if (overlayText) overlayText.style.display = 'none';
+            if (bgPattern) bgPattern.style.display = 'none';
+            
+            // Toca o vídeo
+            video.play();
+        }
+
+        // =============================================
+        // PDV SIMULATOR - BOTÃO PAGAR
+        // =============================================
+        const btnPagar = document.getElementById('btnPagar');
+        const totalAmount = document.getElementById('totalAmount');
+
+        btnPagar.addEventListener('click', () => {
+            const originalText = btnPagar.innerHTML;
+            btnPagar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> IA processando...';
+            btnPagar.style.opacity = '0.7';
+
+            setTimeout(() => {
+                const randomDiscount = (Math.random() * 10).toFixed(2);
+                const newTotal = (289.70 - randomDiscount).toFixed(2);
+                totalAmount.textContent = `R$ ${newTotal}`;
+                totalAmount.style.color = '#00FF88';
+                
+                btnPagar.innerHTML = '<i class="fas fa-check-circle"></i> Pagamento aprovado!';
+                btnPagar.style.background = 'linear-gradient(135deg, #00FF88, #00CC66)';
+                btnPagar.style.color = '#0A0E1A';
+
+                // Efeito de confetes
+                createConfetti();
+
+                setTimeout(() => {
+                    btnPagar.innerHTML = originalText;
+                    btnPagar.style.opacity = '1';
+                    btnPagar.style.background = '';
+                    btnPagar.style.color = '';
+                    totalAmount.style.color = '';
+                }, 3000);
+            }, 2500);
+        });
+
+        // =============================================
+        // CONFETTI EFFECT
+        // =============================================
+        function createConfetti() {
+            const colors = ['#00D4FF', '#FF6B6B', '#FFD700', '#7C3AED', '#00FF88'];
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: ${Math.random() * 8 + 4}px;
+                    height: ${Math.random() * 8 + 4}px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}vw;
+                    top: -20px;
+                    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                    z-index: 9999;
+                    pointer-events: none;
+                    animation: confettiFall ${Math.random() * 2 + 2}s linear forwards;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 4000);
+            }
+
+            if (!document.getElementById('confettiStyle')) {
+                const style = document.createElement('style');
+                style.id = 'confettiStyle';
+                style.textContent = `
+                    @keyframes confettiFall {
+                        0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+                        100% { transform: translateY(100vh) rotate(720deg) scale(0); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        // =============================================
+        // ANIMAÇÃO DE ENTRADA
+        // =============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
+            observer.observe(el);
+        });
+
+        // =============================================
+        // CONTADOR ANIMADO
+        // =============================================
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, 20);
+        }
+
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.textContent;
+                    const num = parseInt(text.replace(/[^0-9]/g, ''));
+                    const suffix = text.replace(/[0-9]/g, '');
+                    if (!isNaN(num)) {
+                        animateCounter(el, num, suffix);
+                    }
+                    statObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(el => statObserver.observe(el));
+
+        console.log('🚀 CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial');
+        console.log('✨ Site carregado com sucesso!');
+        console.log('🤖 IA integrada para previsão de demanda, perfil de cliente e muito mais!');
+        console.log('💰 Planos: Prata e Ouro - R$ 129,99/mês');
+        console.log('🎬 Vídeo de demonstração disponível!');
+    </script>
+
+</body>
+</html>
