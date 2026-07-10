@@ -579,7 +579,7 @@
         }
 
         /* ============================================
-           VIDEO SECTION
+           VIDEO SECTION - YouTube EMBED
            ============================================ */
         .video-section {
             padding: 80px 0;
@@ -597,87 +597,17 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .video-wrapper video {
-            width: 100%;
-            height: auto;
-            display: block;
             background: #000;
+            aspect-ratio: 16 / 9;
         }
 
-        .video-placeholder {
-            position: relative;
+        .video-wrapper iframe {
             width: 100%;
-            padding-bottom: 56.25%;
-            background: linear-gradient(135deg, #0A0E1A, #1A1F35);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .video-placeholder .play-btn {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: rgba(0, 212, 255, 0.2);
-            border: 2px solid rgba(0, 212, 255, 0.5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: var(--primary);
-            transition: var(--transition);
-            z-index: 2;
-            backdrop-filter: blur(10px);
-        }
-
-        .video-placeholder .play-btn:hover {
-            background: rgba(0, 212, 255, 0.4);
-            transform: scale(1.1);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .video-placeholder .video-overlay-text {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gray);
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 24px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .video-placeholder .bg-pattern {
+            height: 100%;
+            border: none;
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
-            z-index: 1;
-        }
-
-        .video-placeholder .bg-pattern .grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
         }
 
         .video-section .video-title {
@@ -1348,12 +1278,6 @@
             .video-section .video-title h2 {
                 font-size: 28px;
             }
-
-            .video-placeholder .play-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1516,7 +1440,7 @@
     </section>
 
     <!-- ==========================================
-    VIDEO SECTION
+    VIDEO SECTION - YouTube EMBED
     ========================================== -->
     <section id="video" class="video-section">
         <div class="container">
@@ -1526,21 +1450,12 @@
                 <p>Assista ao vídeo e descubra como a IA pode transformar seu negócio</p>
             </div>
             <div class="video-wrapper">
-                <div class="video-placeholder" id="videoPlaceholder" onclick="playVideo()">
-                    <div class="bg-pattern">
-                        <div class="grid"></div>
-                    </div>
-                    <div class="play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="video-overlay-text">
-                        <i class="fas fa-film"></i> Clique para assistir à demonstração
-                    </div>
-                    <video id="demoVideo" style="display:none; width:100%; height:auto;" controls>
-                        <source src="https://www.youtube.com/watch?v=oVoHWBpm2zw&t=24s" type="video/mp4">
-                        Seu navegador não suporta vídeo.
-                    </video>
-                </div>
+                <iframe 
+                    src="https://www.youtube.com/embed/oVoHWBpm2zw" 
+                    title="CyvroTech PDV IA - Demonstração do Sistema"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </section>
@@ -1624,29 +1539,6 @@
                 <p>Comece com 15 dias grátis em qualquer plano. Cancele quando quiser.</p>
             </div>
             <div class="pricing-grid">
-             <!--    
-                <div class="pricing-card prata">
-                    <div class="plan-icon prata"><i class="fas fa-crown"></i></div>
-                    <h3 class="plan-name prata">Prata</h3>
-                    <div class="plan-price">
-                        <span class="currency">R$</span> 129,99 <span class="period">/mês</span>
-                    </div>
-                    <p class="plan-description">Perfeito para pequenos negócios que querem começar com IA</p>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> PDV Completo</li>
-                        <li><i class="fas fa-check"></i> Gestão de Estoque</li>
-                        <li><i class="fas fa-check"></i> Relatórios Básicos</li>
-                        <li><i class="fas fa-check"></i> Suporte por Email</li>
-                        <li><i class="fas fa-robot"></i> IA de Previsão de Demanda</li>
-                        <li><i class="fas fa-times"></i> Perfil de Cliente com IA</li>
-                        <li><i class="fas fa-times"></i> Assistente Virtual</li>
-                        <li><i class="fas fa-times"></i> Suporte Prioritário</li>
-                    </ul>
-                    <a href="#" class="plan-btn">
-                        <i class="fas fa-rocket"></i> Começar Grátis
-                    </a>
-                </div> -->
-
                 <!-- PLANO OURO -->
                 <div class="pricing-card ouro">
                     <div class="popular-badge"><i class="fas fa-star"></i> Mais Popular</div>
@@ -1878,31 +1770,6 @@
         });
 
         // =============================================
-        // VIDEO PLAYER
-        // =============================================
-        function playVideo() {
-            const placeholder = document.getElementById('videoPlaceholder');
-            const video = document.getElementById('demoVideo');
-            
-            // Esconde o placeholder e mostra o vídeo
-            placeholder.style.paddingBottom = '0';
-            placeholder.style.background = '#000';
-            video.style.display = 'block';
-            
-            // Esconde os elementos do placeholder
-            const playBtn = placeholder.querySelector('.play-btn');
-            const overlayText = placeholder.querySelector('.video-overlay-text');
-            const bgPattern = placeholder.querySelector('.bg-pattern');
-            
-            if (playBtn) playBtn.style.display = 'none';
-            if (overlayText) overlayText.style.display = 'none';
-            if (bgPattern) bgPattern.style.display = 'none';
-            
-            // Toca o vídeo
-            video.play();
-        }
-
-        // =============================================
         // PDV SIMULATOR - BOTÃO PAGAR
         // =============================================
         const btnPagar = document.getElementById('btnPagar');
@@ -2032,9 +1899,8 @@
 
         console.log('🚀 CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial');
         console.log('✨ Site carregado com sucesso!');
-        console.log('🤖 IA integrada para previsão de demanda, perfil de cliente e muito mais!');
-        console.log('💰 Planos: Prata e Ouro - R$ 129,99/mês');
-        console.log('🎬 Vídeo de demonstração disponível!');
+        console.log('🎬 Vídeo do YouTube embutido!');
+        console.log('💰 Plano: R$ 129,99/mês');
     </script>
 
 </body>
