@@ -23,18 +23,15 @@
             --secondary: #FF6B6B;
             --accent: #7C3AED;
             --gold: #FFD700;
-            --silver: #C0C0C0;
             --dark: #0A0E1A;
             --dark-light: #1A1F35;
-            --gray: #8892A8;
-            --light-gray: #F0F4FF;
+            --gray: #64748B;
+            --light-gray: #F1F5F9;
             --white: #FFFFFF;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 30px 80px rgba(0, 212, 255, 0.15);
-            --radius: 20px;
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         html {
@@ -43,8 +40,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: var(--white);
+            background: var(--white);
+            color: var(--dark);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -59,10 +56,10 @@
            SCROLLBAR
            ============================================ */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--dark);
+            background: var(--light-gray);
         }
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
@@ -89,12 +86,12 @@
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
-            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 8px 35px rgba(0, 212, 255, 0.4);
         }
 
         .btn-outline {
@@ -103,8 +100,8 @@
             gap: 10px;
             padding: 14px 32px;
             background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--dark);
+            border: 2px solid #E2E8F0;
             border-radius: 50px;
             font-weight: 600;
             font-size: 16px;
@@ -134,44 +131,17 @@
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
-            box-shadow: 0 4px 25px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
         }
 
         .btn-secondary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(255, 107, 107, 0.5);
-        }
-
-        .btn-gold {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--gold), #FFA500);
-            color: var(--dark);
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            box-shadow: 0 4px 25px rgba(255, 215, 0, 0.3);
-        }
-
-        .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 8px 35px rgba(255, 107, 107, 0.4);
         }
 
         .btn-large {
             padding: 18px 40px;
             font-size: 18px;
-        }
-
-        .btn-sm {
-            padding: 8px 16px;
-            font-size: 14px;
         }
 
         /* ============================================
@@ -184,16 +154,15 @@
             right: 0;
             z-index: 1000;
             padding: 16px 0;
-            background: rgba(10, 14, 26, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: var(--transition);
         }
 
         .navbar.scrolled {
-            background: rgba(10, 14, 26, 0.95);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
         }
 
         .navbar .container {
@@ -208,7 +177,7 @@
             gap: 12px;
             font-size: 22px;
             font-weight: 800;
-            color: var(--white);
+            color: var(--dark);
             text-decoration: none;
             cursor: pointer;
         }
@@ -222,7 +191,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            color: var(--dark);
+            color: var(--white);
         }
 
         .nav-brand span {
@@ -235,15 +204,16 @@
         .nav-brand small {
             font-size: 12px;
             font-weight: 400;
-            -webkit-text-fill-color: var(--gray);
+            color: var(--gray);
             background: none;
+            -webkit-text-fill-color: var(--gray);
             margin-left: 4px;
         }
 
         .nav-menu {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
             list-style: none;
         }
 
@@ -275,7 +245,7 @@
             display: block;
             width: 28px;
             height: 2px;
-            background: var(--white);
+            background: var(--dark);
             transition: var(--transition);
         }
 
@@ -293,184 +263,11 @@
         }
 
         /* ============================================
-           MODAL TESTE GRÁTIS
-           ============================================ */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--dark-light);
-            border-radius: var(--radius);
-            padding: 40px;
-            max-width: 480px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            animation: modalIn 0.4s ease;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content .form-group {
-            margin-bottom: 16px;
-        }
-
-        .modal-content .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 4px;
-            color: var(--gray);
-        }
-
-        .modal-content .form-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--white);
-            transition: var(--transition);
-        }
-
-        .modal-content .form-group input::placeholder {
-            color: var(--gray);
-            opacity: 0.6;
-        }
-
-        .modal-content .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.08);
-        }
-
-        .modal-content .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--gray);
-            font-size: 28px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-content .modal-close:hover {
-            color: var(--white);
-            transform: rotate(90deg);
-        }
-
-        .modal-content .btn-primary {
-            width: 100%;
-            justify-content: center;
-            padding: 16px;
-        }
-
-        .modal-content .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95) translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* ============================================
-           TOAST NOTIFICATION
-           ============================================ */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 16px 24px;
-            border-radius: 12px;
-            color: #fff;
-            font-weight: 500;
-            background: var(--dark-light);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            display: none;
-            align-items: center;
-            gap: 12px;
-            z-index: 10000;
-            max-width: 450px;
-            animation: slideUp 0.3s ease;
-        }
-
-        .toast.show {
-            display: flex;
-        }
-
-        .toast.success {
-            border-left: 4px solid #10b981;
-        }
-
-        .toast.error {
-            border-left: 4px solid #ef4444;
-        }
-
-        .toast.info {
-            border-left: 4px solid var(--primary);
-        }
-
-        .toast i {
-            font-size: 1.3rem;
-        }
-
-        .toast .toast-close {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: auto;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============================================
            HERO
            ============================================ */
         .hero {
-            padding: 160px 0 80px;
-            background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
-                var(--dark);
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
             position: relative;
             overflow: hidden;
         }
@@ -480,9 +277,9 @@
             position: absolute;
             top: -50%;
             right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             animation: pulseGlow 8s ease-in-out infinite;
         }
@@ -512,10 +309,10 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 18px;
+            padding: 6px 16px;
             background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            color: var(--primary);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            color: var(--primary-dark);
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
@@ -537,11 +334,12 @@
         }
 
         .hero-title {
-            font-size: 58px;
+            font-size: 56px;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -2px;
+            color: var(--dark);
         }
 
         .hero-title .highlight {
@@ -586,7 +384,7 @@
         .stat-number {
             font-size: 28px;
             font-weight: 800;
-            color: var(--white);
+            color: var(--dark);
         }
 
         .stat-label {
@@ -610,9 +408,9 @@
             border-radius: var(--radius);
             padding: 24px;
             position: relative;
-            background: linear-gradient(145deg, #141B2D, #0A0E1A);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
         }
 
         .pdv-header {
@@ -620,14 +418,14 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #E2E8F0;
             margin-bottom: 16px;
         }
 
         .pdv-header .store {
             font-weight: 700;
             font-size: 14px;
-            color: var(--primary);
+            color: var(--dark);
         }
 
         .pdv-header .time {
@@ -636,12 +434,12 @@
         }
 
         .pdv-screen {
-            background: rgba(0, 0, 0, 0.4);
+            background: #F8FAFC;
             border-radius: 12px;
             padding: 16px;
             margin-bottom: 16px;
             min-height: 120px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid #E2E8F0;
         }
 
         .pdv-screen .item {
@@ -650,7 +448,7 @@
             color: var(--gray);
             font-size: 14px;
             padding: 4px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .pdv-screen .item:last-child {
@@ -658,7 +456,7 @@
         }
 
         .pdv-screen .item .price {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         .pdv-screen .total {
@@ -666,13 +464,13 @@
             justify-content: space-between;
             padding-top: 12px;
             margin-top: 12px;
-            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            border-top: 2px solid #E2E8F0;
             font-weight: 700;
             font-size: 18px;
         }
 
         .pdv-screen .total .amount {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         .pdv-actions {
@@ -683,8 +481,8 @@
 
         .pdv-actions button {
             padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--light-gray);
+            border: 1px solid #E2E8F0;
             border-radius: 8px;
             color: var(--gray);
             font-size: 12px;
@@ -694,15 +492,15 @@
         }
 
         .pdv-actions button:hover {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(0, 212, 255, 0.08);
             border-color: var(--primary);
-            color: var(--white);
+            color: var(--dark);
         }
 
         .pdv-actions .btn-pagar {
             grid-column: span 2;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--dark);
+            color: var(--white);
             border: none;
             font-weight: 700;
         }
@@ -714,9 +512,8 @@
 
         .floating-element {
             position: absolute;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--white);
+            border: 1px solid #E2E8F0;
             padding: 12px 20px;
             border-radius: 12px;
             box-shadow: var(--shadow);
@@ -725,7 +522,7 @@
             gap: 10px;
             font-weight: 600;
             font-size: 13px;
-            color: var(--white);
+            color: var(--dark);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -750,7 +547,6 @@
             top: 50%;
             right: -60px;
             animation-delay: 1.5s;
-            background: rgba(255, 107, 107, 0.1);
             border-color: rgba(255, 107, 107, 0.2);
         }
 
@@ -764,19 +560,16 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-8px);
             }
         }
 
-        /* ============================================
-           AI BADGE ANIMATED
-           ============================================ */
         .ai-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.15);
             padding: 4px 14px;
             border-radius: 50px;
             font-size: 11px;
@@ -785,79 +578,56 @@
             margin-left: 8px;
         }
 
-        .ai-badge i {
-            font-size: 12px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
         /* ============================================
            MODULES SECTION
            ============================================ */
         .modules-section {
             padding: 80px 0;
-            background: var(--dark);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            background: var(--white);
+            border-top: 1px solid #E2E8F0;
         }
 
         .modules-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 24px;
             margin-top: 40px;
         }
 
         .module-card {
-            background: var(--dark-light);
+            background: var(--white);
             border-radius: var(--radius);
             padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #E2E8F0;
             transition: var(--transition);
             position: relative;
-            overflow: hidden;
-        }
-
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .module-card:hover::before {
-            opacity: 1;
         }
 
         .module-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(0, 212, 255, 0.2);
             box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
         .module-card .module-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 16px;
         }
 
         .module-card .module-icon.blue {
             background: rgba(0, 212, 255, 0.1);
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         .module-card .module-icon.green {
             background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
+            color: #059669;
         }
 
         .module-card .module-icon.purple {
@@ -867,24 +637,24 @@
 
         .module-card .module-icon.orange {
             background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
+            color: #D97706;
+        }
+
+        .module-card .module-icon.gold {
+            background: rgba(255, 215, 0, 0.15);
+            color: #B45309;
         }
 
         .module-card .module-icon.red {
             background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
-        .module-card .module-icon.gold {
-            background: rgba(255, 215, 0, 0.1);
-            color: var(--gold);
+            color: #DC2626;
         }
 
         .module-card h3 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--white);
+            color: var(--dark);
         }
 
         .module-card p {
@@ -896,21 +666,20 @@
 
         .module-card .module-stats {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .module-card .module-stats .stat-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px 12px;
-            border-radius: 8px;
+            background: var(--light-gray);
+            padding: 4px 12px;
+            border-radius: 6px;
             font-size: 12px;
             color: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .module-card .module-stats .stat-item strong {
-            color: var(--white);
+            color: var(--dark);
         }
 
         .module-card .module-tag {
@@ -925,21 +694,18 @@
         }
 
         .module-card .module-tag.ia {
-            background: rgba(124, 58, 237, 0.2);
+            background: rgba(124, 58, 237, 0.1);
             color: var(--accent);
-            border: 1px solid rgba(124, 58, 237, 0.2);
         }
 
         .module-card .module-tag.novo {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
         }
 
         .module-card .module-tag.popular {
-            background: rgba(245, 158, 11, 0.2);
-            color: #f59e0b;
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            background: rgba(245, 158, 11, 0.1);
+            color: #D97706;
         }
 
         .module-card .module-features {
@@ -962,13 +728,13 @@
         }
 
         /* ============================================
-           VIDEO SECTION - YouTube EMBED
+           VIDEO SECTION
            ============================================ */
         .video-section {
             padding: 80px 0;
-            background: var(--dark);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            background: var(--light-gray);
+            border-top: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .video-wrapper {
@@ -978,8 +744,7 @@
             margin: 0 auto;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
             background: #000;
             aspect-ratio: 16 / 9;
         }
@@ -1002,6 +767,7 @@
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 12px;
+            color: var(--dark);
         }
 
         .video-section .video-title p {
@@ -1010,7 +776,7 @@
         }
 
         .video-section .video-title .highlight {
-            color: var(--primary);
+            color: var(--primary-dark);
         }
 
         /* ============================================
@@ -1018,9 +784,9 @@
            ============================================ */
         .logos {
             padding: 60px 0;
-            background: var(--dark-light);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            background: var(--white);
+            border-top: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .logos-title {
@@ -1043,7 +809,7 @@
         .logos-grid i {
             font-size: 36px;
             color: var(--gray);
-            opacity: 0.2;
+            opacity: 0.3;
             transition: var(--transition);
         }
 
@@ -1057,7 +823,7 @@
            ============================================ */
         .features {
             padding: 100px 0;
-            background: var(--dark);
+            background: var(--white);
         }
 
         .section-header {
@@ -1071,7 +837,7 @@
             padding: 6px 18px;
             background: rgba(0, 212, 255, 0.08);
             border: 1px solid rgba(0, 212, 255, 0.1);
-            color: var(--primary);
+            color: var(--primary-dark);
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
@@ -1085,6 +851,7 @@
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -1px;
+            color: var(--dark);
         }
 
         .section-header p {
@@ -1100,16 +867,16 @@
 
         .feature-card {
             padding: 40px 32px;
-            background: var(--dark-light);
+            background: var(--white);
             border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid #E2E8F0;
             transition: var(--transition);
         }
 
         .feature-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
         }
 
         .feature-icon {
@@ -1128,6 +895,7 @@
         .feature-card h3 {
             font-size: 20px;
             margin-bottom: 12px;
+            color: var(--dark);
         }
 
         .feature-card p {
@@ -1141,17 +909,17 @@
             font-size: 11px;
             font-weight: 600;
             color: var(--accent);
-            background: rgba(124, 58, 237, 0.1);
+            background: rgba(124, 58, 237, 0.08);
             padding: 4px 12px;
             border-radius: 50px;
         }
 
         /* ============================================
-           PRICING - PLANOS
+           PRICING
            ============================================ */
         .pricing {
             padding: 100px 0;
-            background: var(--dark-light);
+            background: var(--light-gray);
         }
 
         .pricing-grid {
@@ -1163,10 +931,10 @@
         }
 
         .pricing-card {
-            background: var(--dark);
+            background: var(--white);
             border-radius: var(--radius);
             padding: 48px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #E2E8F0;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -1174,8 +942,8 @@
 
         .pricing-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0, 212, 255, 0.2);
             box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
         .pricing-card .popular-badge {
@@ -1195,13 +963,6 @@
         .pricing-card .plan-icon {
             font-size: 40px;
             margin-bottom: 16px;
-        }
-
-        .pricing-card .plan-icon.prata {
-            color: var(--silver);
-        }
-
-        .pricing-card .plan-icon.ouro {
             color: var(--gold);
         }
 
@@ -1209,13 +970,6 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 8px;
-        }
-
-        .pricing-card .plan-name.prata {
-            color: var(--silver);
-        }
-
-        .pricing-card .plan-name.ouro {
             color: var(--gold);
         }
 
@@ -1223,6 +977,7 @@
             font-size: 48px;
             font-weight: 900;
             margin: 16px 0 8px;
+            color: var(--dark);
         }
 
         .pricing-card .plan-price .currency {
@@ -1252,26 +1007,17 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--white);
+            color: var(--dark);
             font-size: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid #E2E8F0;
         }
 
         .pricing-card .plan-features li:last-child {
             border-bottom: none;
         }
 
-        .pricing-card .plan-features li i {
-            font-size: 16px;
-        }
-
         .pricing-card .plan-features li .fa-check {
-            color: #00FF88;
-        }
-
-        .pricing-card .plan-features li .fa-times {
-            color: var(--gray);
-            opacity: 0.3;
+            color: #10B981;
         }
 
         .pricing-card .plan-features li .fa-robot {
@@ -1288,8 +1034,7 @@
             padding: 16px;
             font-size: 16px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--dark);
-            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+            color: var(--white);
             border: none;
             border-radius: 50px;
             font-weight: 700;
@@ -1299,11 +1044,12 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
         }
 
         .pricing-card .plan-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 8px 35px rgba(0, 212, 255, 0.4);
         }
 
         /* ============================================
@@ -1311,7 +1057,7 @@
            ============================================ */
         .testimonials {
             padding: 100px 0;
-            background: var(--dark);
+            background: var(--white);
         }
 
         .testimonials-grid {
@@ -1321,17 +1067,17 @@
         }
 
         .testimonial-card {
-            background: var(--dark-light);
+            background: var(--white);
             padding: 32px;
             border-radius: var(--radius);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid #E2E8F0;
             transition: var(--transition);
         }
 
         .testimonial-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(0, 212, 255, 0.1);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
         }
 
         .stars {
@@ -1344,7 +1090,7 @@
         .testimonial-card p {
             font-size: 16px;
             line-height: 1.8;
-            color: var(--white);
+            color: var(--dark);
             margin-bottom: 20px;
         }
 
@@ -1364,7 +1110,7 @@
         .testimonial-author strong {
             display: block;
             font-size: 15px;
-            color: var(--white);
+            color: var(--dark);
         }
 
         .testimonial-author span {
@@ -1377,21 +1123,20 @@
            ============================================ */
         .cta {
             padding: 100px 0;
-            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                var(--dark);
+            background: linear-gradient(135deg, #0A0E1A 0%, #1A1F35 100%);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .cta-content h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 16px;
+            color: var(--white);
         }
 
         .cta-content p {
             font-size: 18px;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 32px;
         }
 
@@ -1402,34 +1147,44 @@
             flex-wrap: wrap;
         }
 
+        .cta .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--dark);
+            box-shadow: 0 4px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta .btn-primary:hover {
+            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .cta .btn-outline {
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .cta .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .cta .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #FF4444);
+            color: var(--white);
+        }
+
+        .cta .btn-secondary:hover {
+            box-shadow: 0 8px 40px rgba(255, 107, 107, 0.4);
+        }
+
         /* ============================================
            PÁGINAS DE SUPORTE
            ============================================ */
         .support-page {
             padding: 140px 0 80px;
-            background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
-                var(--dark);
+            background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
             position: relative;
             overflow: hidden;
             min-height: 100vh;
-        }
-
-        .support-page::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulseGlow 8s ease-in-out infinite;
-        }
-
-        .support-page .container {
-            position: relative;
-            z-index: 1;
         }
 
         .support-page .badge-top {
@@ -1437,7 +1192,7 @@
             padding: 6px 18px;
             background: rgba(0, 212, 255, 0.08);
             border: 1px solid rgba(0, 212, 255, 0.1);
-            color: var(--primary);
+            color: var(--primary-dark);
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
@@ -1451,6 +1206,7 @@
             font-weight: 900;
             margin-bottom: 16px;
             letter-spacing: -1px;
+            color: var(--dark);
         }
 
         .support-page h1 .highlight {
@@ -1466,23 +1222,22 @@
             max-width: 600px;
         }
 
-        /* ===== CONTENT CARDS ===== */
         .content-section-support {
             padding: 60px 0 100px;
-            background: var(--dark);
+            background: var(--white);
         }
 
         .content-card {
-            background: var(--dark-light);
+            background: var(--white);
             border-radius: var(--radius);
             padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #E2E8F0;
             margin-bottom: 30px;
             transition: var(--transition);
         }
 
         .content-card:hover {
-            border-color: rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
             box-shadow: var(--shadow-hover);
         }
 
@@ -1490,7 +1245,7 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 16px;
-            color: var(--white);
+            color: var(--dark);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1505,7 +1260,7 @@
             font-size: 20px;
             font-weight: 600;
             margin: 24px 0 12px;
-            color: var(--white);
+            color: var(--dark);
         }
 
         .content-card p {
@@ -1528,17 +1283,16 @@
         }
 
         .content-card ul li strong {
-            color: var(--white);
+            color: var(--dark);
         }
 
         .content-card .last-updated {
             margin-top: 30px;
             padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--light-gray);
             border-radius: 12px;
             color: var(--gray);
             font-size: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .support-grid {
@@ -1548,15 +1302,15 @@
         }
 
         .support-grid .support-item {
-            background: var(--dark-light);
+            background: var(--white);
             border-radius: var(--radius);
             padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #E2E8F0;
             transition: var(--transition);
         }
 
         .support-grid .support-item:hover {
-            border-color: rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
             transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
         }
@@ -1571,7 +1325,7 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--white);
+            color: var(--dark);
         }
 
         .support-grid .support-item p {
@@ -1587,7 +1341,7 @@
 
         .status-list li {
             padding: 12px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #E2E8F0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1606,15 +1360,199 @@
         }
 
         .status-list .status-dot.online {
-            background: #10b981;
+            background: #10B981;
         }
 
         .status-list .status-dot.warning {
-            background: #f59e0b;
+            background: #F59E0B;
         }
 
         .status-list .status-dot.offline {
-            background: #ef4444;
+            background: #EF4444;
+        }
+
+        /* ============================================
+           TOAST / MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            animation: modalIn 0.3s ease;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content .form-group {
+            margin-bottom: 16px;
+        }
+
+        .modal-content .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            color: var(--gray);
+        }
+
+        .modal-content .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .modal-content .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.08);
+        }
+
+        .modal-content .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-content .modal-close:hover {
+            color: var(--dark);
+            transform: rotate(90deg);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 10000;
+            max-width: 450px;
+            animation: slideUp 0.3s ease;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            border-left: 4px solid #10B981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #EF4444;
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary);
+        }
+
+        .toast i {
+            font-size: 1.3rem;
+        }
+
+        .toast .toast-close {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           BOTÃO VOLTAR AO TOPO
+           ============================================ */
+        .btn-topo {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            transition: var(--transition);
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-topo.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .btn-topo:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 35px rgba(0, 212, 255, 0.4);
         }
 
         /* ============================================
@@ -1622,9 +1560,9 @@
            ============================================ */
         .footer {
             padding: 60px 0 30px;
-            background: var(--dark-light);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            background: var(--dark);
             color: var(--gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .footer-grid {
@@ -1668,7 +1606,7 @@
         .social-links a {
             width: 40px;
             height: 40px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1810,14 +1748,14 @@
                 width: 80%;
                 max-width: 320px;
                 height: 100vh;
-                background: var(--dark-light);
+                background: var(--white);
                 flex-direction: column;
                 justify-content: center;
                 padding: 40px;
-                box-shadow: var(--shadow);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
                 transition: var(--transition);
                 gap: 24px;
-                border-left: 1px solid rgba(255, 255, 255, 0.05);
+                border-left: 1px solid #E2E8F0;
             }
 
             .nav-menu.active {
@@ -1930,6 +1868,23 @@
             .pdv-actions .btn-pagar {
                 grid-column: span 2;
             }
+
+            .btn-topo {
+                bottom: 80px;
+                left: 16px;
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+
+            .toast {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                max-width: unset;
+                font-size: 14px;
+                padding: 14px 18px;
+            }
         }
     </style>
 </head>
@@ -1955,7 +1910,7 @@
                 Teste Grátis CyvroTech
             </h2>
             <p style="text-align:center; color:var(--gray); margin-bottom:24px;">
-                Comece seus <strong style="color:var(--primary);">15 dias grátis</strong> agora. Sem compromisso!
+                Comece seus <strong style="color:var(--primary-dark);">15 dias grátis</strong> agora. Sem compromisso!
             </p>
             <form id="formTeste" onsubmit="return enviarTeste(event)">
                 <div class="form-group">
@@ -1974,16 +1929,23 @@
                     <label>Nome da Loja</label>
                     <input type="text" id="lojaTeste" placeholder="Minha Loja">
                 </div>
-                <button type="submit" class="btn-primary" id="btnEnviarTeste">
+                <button type="submit" class="btn-primary" id="btnEnviarTeste" style="width:100%; justify-content:center; padding:16px;">
                     <i class="fas fa-gem"></i> Iniciar Teste Grátis
                 </button>
                 <p style="text-align:center; font-size:12px; color:var(--gray); margin-top:12px;">
                     Ao clicar, você concorda com nossos
-                    <a href="#" style="color:var(--primary); text-decoration:none;">Termos de Uso</a>
+                    <a href="#" style="color:var(--primary-dark); text-decoration:none;">Termos de Uso</a>
                 </p>
             </form>
         </div>
     </div>
+
+    <!-- ==========================================
+    BOTÃO VOLTAR AO TOPO
+    ========================================== -->
+    <button class="btn-topo" id="btnTopo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- ==========================================
     NAVBAR
@@ -2002,7 +1964,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a onclick="showPage('home')" id="nav-home" class="active">Início</a></li>
                 <li><a onclick="showPage('modulos')" id="nav-modulos">Módulos</a></li>
-                <li><a onclick="showPage('ajuda')" id="nav-ajuda">Central de Ajuda</a></li>
+                <li><a onclick="showPage('ajuda')" id="nav-ajuda">Ajuda</a></li>
                 <li><a onclick="showPage('comunidade')" id="nav-comunidade">Comunidade</a></li>
                 <li><a onclick="showPage('documentacao')" id="nav-documentacao">Documentação IA</a></li>
                 <li><a onclick="showPage('status')" id="nav-status">Status</a></li>
@@ -2053,19 +2015,19 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat">
-                            <span class="stat-number">5K+</span>
+                            <span class="stat-number" data-target="5000">5K+</span>
                             <span class="stat-label">Lojas confiam</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">99%</span>
+                            <span class="stat-number" data-target="99">99%</span>
                             <span class="stat-label">Satisfação</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">4.9</span>
+                            <span class="stat-number" data-target="49">4.9</span>
                             <span class="stat-label">Avaliação média</span>
                         </div>
                         <div class="stat">
-                            <span class="stat-number">+47%</span>
+                            <span class="stat-number" data-target="47">+47%</span>
                             <span class="stat-label">Aumento em vendas</span>
                         </div>
                     </div>
@@ -2126,7 +2088,7 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag"><i class="fas fa-cubes"></i> Módulos do Sistema</span>
-                    <h2>Tudo o que sua empresa <span style="color: var(--primary);">precisa</span></h2>
+                    <h2>Tudo o que sua empresa <span style="color: var(--primary-dark);">precisa</span></h2>
                     <p>Módulos integrados com IA para gestão completa do seu negócio</p>
                 </div>
                 <div class="modules-grid">
@@ -2139,12 +2101,10 @@
                             <li><i class="fas fa-check"></i> Previsão de demanda com IA</li>
                             <li><i class="fas fa-check"></i> Alertas de estoque crítico</li>
                             <li><i class="fas fa-check"></i> Sugestões automáticas de compra</li>
-                            <li><i class="fas fa-check"></i> Lote econômico de compra (LEC)</li>
-                            <li><i class="fas fa-check"></i> Controle de validade e lotes</li>
                         </ul>
                         <div class="module-stats">
                             <span class="stat-item"><strong>100%</strong> otimizado</span>
-                            <span class="stat-item"><strong>30%</strong> redução de estoque parado</span>
+                            <span class="stat-item"><strong>30%</strong> redução</span>
                         </div>
                     </div>
 
@@ -2154,15 +2114,13 @@
                         <h3>Controle de Caixa</h3>
                         <p>Gestão completa do fluxo de caixa com abertura, fechamento, sangrias, suplementos e relatórios inteligentes.</p>
                         <ul class="module-features">
-                            <li><i class="fas fa-check"></i> Abertura e fechamento de caixa</li>
+                            <li><i class="fas fa-check"></i> Abertura e fechamento</li>
                             <li><i class="fas fa-check"></i> Sangrias e suplementos</li>
-                            <li><i class="fas fa-check"></i> Vendas por forma de pagamento</li>
                             <li><i class="fas fa-check"></i> Relatórios financeiros com IA</li>
-                            <li><i class="fas fa-check"></i> Histórico completo de movimentações</li>
                         </ul>
                         <div class="module-stats">
-                            <span class="stat-item"><strong>99%</strong> de precisão</span>
-                            <span class="stat-item"><strong>15h</strong> economia semanal</span>
+                            <span class="stat-item"><strong>99%</strong> precisão</span>
+                            <span class="stat-item"><strong>15h</strong> economia</span>
                         </div>
                     </div>
 
@@ -2174,13 +2132,11 @@
                         <ul class="module-features">
                             <li><i class="fas fa-check"></i> Previsão de vendas com IA</li>
                             <li><i class="fas fa-check"></i> Sugestões de compra automáticas</li>
-                            <li><i class="fas fa-check"></i> Análise de perfil de cliente</li>
-                            <li><i class="fas fa-check"></i> Detecção de anomalias e fraudes</li>
                             <li><i class="fas fa-check"></i> Otimização de preços inteligente</li>
                         </ul>
                         <div class="module-stats">
-                            <span class="stat-item"><strong>95%</strong> de precisão</span>
-                            <span class="stat-item"><strong>47%</strong> aumento em vendas</span>
+                            <span class="stat-item"><strong>95%</strong> precisão</span>
+                            <span class="stat-item"><strong>47%</strong> aumento</span>
                         </div>
                     </div>
 
@@ -2190,11 +2146,9 @@
                         <h3>PDV Inteligente</h3>
                         <p>Ponto de venda rápido e intuitivo com sugestões automáticas de produtos e agilidade no checkout.</p>
                         <ul class="module-features">
-                            <li><i class="fas fa-check"></i> Interface rápida e intuitiva</li>
-                            <li><i class="fas fa-check"></i> Sugestões de produtos com IA</li>
-                            <li><i class="fas fa-check"></i> Múltiplas formas de pagamento</li>
-                            <li><i class="fas fa-check"></i> Modo offline com sincronização</li>
-                            <li><i class="fas fa-check"></i> Comandas e pedidos</li>
+                            <li><i class="fas fa-check"></i> Interface rápida</li>
+                            <li><i class="fas fa-check"></i> Sugestões com IA</li>
+                            <li><i class="fas fa-check"></i> Modo offline</li>
                         </ul>
                         <div class="module-stats">
                             <span class="stat-item"><strong>60%</strong> mais rápido</span>
@@ -2209,13 +2163,11 @@
                         <p>Cadastro completo com análise de perfil, histórico de compras e segmentação inteligente.</p>
                         <ul class="module-features">
                             <li><i class="fas fa-check"></i> Perfil de cliente com IA</li>
-                            <li><i class="fas fa-check"></i> Histórico de compras detalhado</li>
-                            <li><i class="fas fa-check"></i> Segmentação e fidelidade</li>
-                            <li><i class="fas fa-check"></i> Análise de sentimento</li>
+                            <li><i class="fas fa-check"></i> Histórico de compras</li>
                             <li><i class="fas fa-check"></i> Automação de cobrança</li>
                         </ul>
                         <div class="module-stats">
-                            <span class="stat-item"><strong>10K+</strong> clientes gerenciados</span>
+                            <span class="stat-item"><strong>10K+</strong> clientes</span>
                             <span class="stat-item"><strong>40%</strong> retenção</span>
                         </div>
                     </div>
@@ -2226,11 +2178,9 @@
                         <h3>Gestão Financeira</h3>
                         <p>Controle completo de contas a pagar, a receber, fluxo de caixa e relatórios financeiros com IA.</p>
                         <ul class="module-features">
-                            <li><i class="fas fa-check"></i> Contas a pagar e receber</li>
+                            <li><i class="fas fa-check"></i> Contas a pagar/receber</li>
                             <li><i class="fas fa-check"></i> Fluxo de caixa em tempo real</li>
-                            <li><i class="fas fa-check"></i> Relatórios financeiros com IA</li>
-                            <li><i class="fas fa-check"></i> Previsão de fluxo de caixa</li>
-                            <li><i class="fas fa-check"></i> Dashboard de indicadores</li>
+                            <li><i class="fas fa-check"></i> Relatórios com IA</li>
                         </ul>
                         <div class="module-stats">
                             <span class="stat-item"><strong>R$ 500K+</strong> gerenciados</span>
@@ -2276,7 +2226,7 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag"><i class="fas fa-microchip"></i> Inteligência Artificial</span>
-                    <h2>O PDV mais <span style="color: var(--primary);">inteligente</span> do Brasil</h2>
+                    <h2>O PDV mais <span style="color: var(--primary-dark);">inteligente</span> do Brasil</h2>
                     <p>Recursos que vão além do tradicional, com IA para impulsionar suas vendas</p>
                 </div>
                 <div class="features-grid">
@@ -2325,14 +2275,14 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag"><i class="fas fa-tags"></i> Planos</span>
-                    <h2>Escolha o plano <span style="color: var(--primary);">ideal</span> para seu negócio</h2>
+                    <h2>Escolha o plano <span style="color: var(--primary-dark);">ideal</span> para seu negócio</h2>
                     <p>Comece com 15 dias grátis em qualquer plano. Cancele quando quiser.</p>
                 </div>
                 <div class="pricing-grid">
-                    <div class="pricing-card ouro">
+                    <div class="pricing-card">
                         <div class="popular-badge"><i class="fas fa-star"></i> Mais Popular</div>
-                        <div class="plan-icon ouro"><i class="fas fa-crown"></i></div>
-                        <h3 class="plan-name ouro">Ouro</h3>
+                        <div class="plan-icon"><i class="fas fa-crown"></i></div>
+                        <h3 class="plan-name">Ouro</h3>
                         <div class="plan-price">
                             <span class="currency">R$</span> 129,99 <span class="period">/mês</span>
                         </div>
@@ -2343,9 +2293,9 @@
                             <li><i class="fas fa-check"></i> Relatórios com IA</li>
                             <li><i class="fas fa-check"></i> Suporte Prioritário 24/7</li>
                             <li><i class="fas fa-robot"></i> IA de Previsão de Demanda</li>
-                            <li><i class="fas fa-user-tag"></i> Perfil de Cliente com IA</li>
+                            <li><i class="fas fa-robot"></i> Perfil de Cliente com IA</li>
                             <li><i class="fas fa-robot"></i> Assistente Virtual</li>
-                            <li><i class="fas fa-star"></i> Análise de Sentimento do Cliente</li>
+                            <li><i class="fas fa-star"></i> Análise de Sentimento</li>
                             <li><i class="fas fa-star"></i> Integração com Marketplaces</li>
                             <li><i class="fas fa-star"></i> Dashboard Personalizado</li>
                         </ul>
@@ -2362,7 +2312,7 @@
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag"><i class="fas fa-quote-left"></i> Depoimentos</span>
-                    <h2>O que nossos clientes dizem sobre a <span style="color: var(--primary);">IA</span></h2>
+                    <h2>O que nossos clientes dizem sobre a <span style="color: var(--primary-dark);">IA</span></h2>
                 </div>
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
@@ -2424,9 +2374,6 @@
                         <a href="#" class="btn-outline btn-large" onclick="abrirWhatsApp()">
                             <i class="fas fa-phone"></i> (84) 99161-2793
                         </a>
-                        <a href="#" class="btn-outline btn-large" onclick="abrirWhatsApp()">
-                            <i class="fas fa-phone"></i> (84) 99163-8173
-                        </a>
                     </div>
                 </div>
             </div>
@@ -2446,7 +2393,6 @@
         </section>
         <section class="content-section-support">
             <div class="container">
-                <!-- Estoque -->
                 <div class="content-card">
                     <h2><i class="fas fa-warehouse"></i> Gestão de Estoque</h2>
                     <p>Controle completo do seu estoque com inteligência artificial para otimizar suas compras e reduzir desperdícios.</p>
@@ -2464,7 +2410,6 @@
                     </div>
                 </div>
 
-                <!-- Caixa -->
                 <div class="content-card">
                     <h2><i class="fas fa-cash-register"></i> Controle de Caixa</h2>
                     <p>Gerencie todo o fluxo financeiro do seu negócio de forma simples e segura.</p>
@@ -2482,7 +2427,6 @@
                     </div>
                 </div>
 
-                <!-- IA -->
                 <div class="content-card">
                     <h2><i class="fas fa-robot"></i> Inteligência Artificial</h2>
                     <p>O coração do sistema CyvroTech. A IA trabalha 24/7 para otimizar seu negócio.</p>
@@ -2500,7 +2444,6 @@
                     </div>
                 </div>
 
-                <!-- PDV -->
                 <div class="content-card">
                     <h2><i class="fas fa-shopping-cart"></i> PDV Inteligente</h2>
                     <p>O ponto de venda mais rápido e intuitivo do mercado.</p>
@@ -2575,17 +2518,14 @@
             <div class="container">
                 <div class="content-card">
                     <h2><i class="fas fa-comments"></i> Fórum da Comunidade</h2>
-                    <p>Participe das discussões e troque ideias com outros usuários:</p>
                     <ul>
                         <li><strong>💡 Dicas de Vendas:</strong> Estratégias para aumentar suas vendas.</li>
                         <li><strong>📊 Análise de Dados:</strong> Como usar os relatórios a seu favor.</li>
                         <li><strong>🤖 IA no Varejo:</strong> Casos de uso da inteligência artificial.</li>
-                        <li><strong>🛠️ Personalização:</strong> Configurações avançadas do sistema.</li>
                     </ul>
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-calendar-alt"></i> Eventos e Webinars</h2>
-                    <p>Participe dos nossos eventos exclusivos:</p>
                     <ul>
                         <li><strong>📅 Webinar: IA no Varejo</strong> - Toda quinta-feira, 15h</li>
                         <li><strong>📅 Encontro de Empreendedores</strong> - Último sábado do mês</li>
@@ -2621,7 +2561,6 @@
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-code"></i> API e Integrações</h2>
-                    <p>Documentação para desenvolvedores:</p>
                     <ul>
                         <li><strong>REST API:</strong> Endpoints para integração com outros sistemas.</li>
                         <li><strong>Webhooks:</strong> Notificações em tempo real para eventos do sistema.</li>
@@ -2649,14 +2588,14 @@
         <section class="content-section-support">
             <div class="container">
                 <div class="content-card">
-                    <h2><i class="fas fa-check-circle" style="color:#10b981;"></i> Status dos Serviços</h2>
+                    <h2><i class="fas fa-check-circle" style="color:#10B981;"></i> Status dos Serviços</h2>
                     <ul class="status-list">
-                        <li><span><span class="status-dot online"></span> API Principal</span> <span style="color:#10b981;">Operacional</span></li>
-                        <li><span><span class="status-dot online"></span> Banco de Dados</span> <span style="color:#10b981;">Operacional</span></li>
-                        <li><span><span class="status-dot online"></span> Servidor Web</span> <span style="color:#10b981;">Operacional</span></li>
-                        <li><span><span class="status-dot online"></span> IA e Machine Learning</span> <span style="color:#10b981;">Operacional</span></li>
-                        <li><span><span class="status-dot online"></span> WebSocket (tempo real)</span> <span style="color:#10b981;">Operacional</span></li>
-                        <li><span><span class="status-dot online"></span> Backup Automático</span> <span style="color:#10b981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> API Principal</span> <span style="color:#10B981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> Banco de Dados</span> <span style="color:#10B981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> Servidor Web</span> <span style="color:#10B981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> IA e Machine Learning</span> <span style="color:#10B981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> WebSocket (tempo real)</span> <span style="color:#10B981;">Operacional</span></li>
+                        <li><span><span class="status-dot online"></span> Backup Automático</span> <span style="color:#10B981;">Operacional</span></li>
                     </ul>
                     <div class="last-updated">
                         <i class="fas fa-clock"></i> Última atualização: 10 de julho de 2026 - 14:32
@@ -2672,9 +2611,8 @@
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-bell"></i> Notificações</h2>
-                    <p>Inscreva-se para receber alertas sobre o status do sistema:</p>
                     <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
-                        <input type="email" placeholder="Seu e-mail" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--white);font-size:16px;min-width:200px;">
+                        <input type="email" placeholder="Seu e-mail" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid #E2E8F0;font-size:16px;min-width:200px;">
                         <button class="btn-primary" style="padding:12px 24px;" onclick="mostrarToast('✅ Inscrição realizada com sucesso!', 'success')">
                             <i class="fas fa-envelope"></i> Inscrever
                         </button>
@@ -2697,11 +2635,11 @@
                     <span>CyvroTech <small>PDV<sup>IA</sup></small></span>
                     <p>O sistema de PDV mais inteligente do Brasil. Transforme sua loja com o poder da inteligência artificial.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" onclick="mostrarToast('🔗 LinkedIn em breve!', 'info')"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" onclick="mostrarToast('🔗 YouTube em breve!', 'info')"><i class="fab fa-youtube"></i></a>
+                        <a href="#" onclick="mostrarToast('🔗 Instagram em breve!', 'info')"><i class="fab fa-instagram"></i></a>
                         <a href="#" onclick="abrirWhatsApp()"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#" onclick="mostrarToast('🔗 GitHub em breve!', 'info')"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -2709,17 +2647,17 @@
                     <ul>
                         <li><a onclick="showPage('home')">Recursos IA</a></li>
                         <li><a onclick="showPage('home')">Preços</a></li>
-                        <li><a href="#">Integrações</a></li>
-                        <li><a href="#">API</a></li>
+                        <li><a href="#" onclick="mostrarToast('🔗 Integrações em breve!', 'info')">Integrações</a></li>
+                        <li><a href="#" onclick="mostrarToast('🔗 API em breve!', 'info')">API</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h4>Empresa</h4>
                     <ul>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Carreiras</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="#" onclick="mostrarToast('📖 Sobre em breve!', 'info')">Sobre</a></li>
+                        <li><a href="#" onclick="mostrarToast('💼 Carreiras em breve!', 'info')">Carreiras</a></li>
+                        <li><a href="#" onclick="mostrarToast('📝 Blog em breve!', 'info')">Blog</a></li>
+                        <li><a href="#" onclick="mostrarToast('📧 Contato: suporte@cyvrotech.com', 'info')">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -2735,10 +2673,10 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 CyvroTech PDV<sup>IA</sup>. Todos os direitos reservados. <span style="color: var(--gray); font-size: 12px;">Feito com <i class="fas fa-heart" style="color: var(--secondary);"></i></span></p>
                 <div class="footer-legal">
-                    <a href="#">Privacidade</a>
-                    <a href="#">Termos</a>
-                    <a href="#">Cookies</a>
-                    <a href="#">LGPD</a>
+                    <a href="#" onclick="mostrarToast('📄 Política de Privacidade em breve!', 'info')">Privacidade</a>
+                    <a href="#" onclick="mostrarToast('📄 Termos de Uso em breve!', 'info')">Termos</a>
+                    <a href="#" onclick="mostrarToast('🍪 Cookies em breve!', 'info')">Cookies</a>
+                    <a href="#" onclick="mostrarToast('🔒 LGPD em breve!', 'info')">LGPD</a>
                 </div>
             </div>
         </div>
@@ -2806,18 +2744,16 @@
         });
 
         // =============================================
-        // SMOOTH SCROLL
+        // BOTÃO VOLTAR AO TOPO
         // =============================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+        const btnTopo = document.getElementById('btnTopo');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btnTopo.classList.add('show');
+            } else {
+                btnTopo.classList.remove('show');
+            }
         });
 
         // =============================================
@@ -2837,8 +2773,6 @@
             e.preventDefault();
             const nome = document.getElementById('nomeTeste').value;
             const email = document.getElementById('emailTeste').value;
-            const telefone = document.getElementById('telefoneTeste').value;
-            const loja = document.getElementById('lojaTeste').value;
 
             const btn = document.getElementById('btnEnviarTeste');
             const originalText = btn.innerHTML;
@@ -2847,7 +2781,8 @@
 
             setTimeout(() => {
                 fecharModalTeste();
-                mostrarToast(`✅ Obrigado ${nome}! Seu teste grátis foi iniciado. Enviaremos instruções para ${email}`, 'success');
+                mostrarToast(`✅ Obrigado ${nome}! Seu teste grátis foi iniciado. Enviaremos instruções para ${email}`,
+                    'success');
                 btn.innerHTML = originalText;
                 btn.disabled = false;
                 document.getElementById('formTeste').reset();
@@ -2909,11 +2844,11 @@
                 const randomDiscount = (Math.random() * 10).toFixed(2);
                 const newTotal = (289.70 - randomDiscount).toFixed(2);
                 totalAmount.textContent = `R$ ${newTotal}`;
-                totalAmount.style.color = '#00FF88';
+                totalAmount.style.color = '#059669';
 
                 btnPagar.innerHTML = '<i class="fas fa-check-circle"></i> Pagamento aprovado!';
-                btnPagar.style.background = 'linear-gradient(135deg, #00FF88, #00CC66)';
-                btnPagar.style.color = '#0A0E1A';
+                btnPagar.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                btnPagar.style.color = '#fff';
 
                 createConfetti();
 
@@ -2931,21 +2866,21 @@
         // CONFETTI EFFECT
         // =============================================
         function createConfetti() {
-            const colors = ['#00D4FF', '#FF6B6B', '#FFD700', '#7C3AED', '#00FF88'];
+            const colors = ['#00D4FF', '#FF6B6B', '#FFD700', '#7C3AED', '#10B981'];
             for (let i = 0; i < 40; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.cssText = `
-                    position: fixed;
-                    width: ${Math.random() * 8 + 4}px;
-                    height: ${Math.random() * 8 + 4}px;
-                    background: ${colors[Math.floor(Math.random() * colors.length)]};
-                    left: ${Math.random() * 100}vw;
-                    top: -20px;
-                    border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
-                    z-index: 9999;
-                    pointer-events: none;
-                    animation: confettiFall ${Math.random() * 2 + 2}s linear forwards;
-                `;
+                        position: fixed;
+                        width: ${Math.random() * 8 + 4}px;
+                        height: ${Math.random() * 8 + 4}px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        left: ${Math.random() * 100}vw;
+                        top: -20px;
+                        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                        z-index: 9999;
+                        pointer-events: none;
+                        animation: confettiFall ${Math.random() * 2 + 2}s linear forwards;
+                    `;
                 document.body.appendChild(confetti);
                 setTimeout(() => confetti.remove(), 4000);
             }
@@ -2954,11 +2889,11 @@
                 const style = document.createElement('style');
                 style.id = 'confettiStyle';
                 style.textContent = `
-                    @keyframes confettiFall {
-                        0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-                        100% { transform: translateY(100vh) rotate(720deg) scale(0); opacity: 0; }
-                    }
-                `;
+                        @keyframes confettiFall {
+                            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+                            100% { transform: translateY(100vh) rotate(720deg) scale(0); opacity: 0; }
+                        }
+                    `;
                 document.head.appendChild(style);
             }
         }
@@ -2981,7 +2916,7 @@
         }, observerOptions);
 
         document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card, .module-card').forEach((el,
-        index) => {
+            index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
