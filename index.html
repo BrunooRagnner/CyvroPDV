@@ -144,6 +144,11 @@
             font-size: 18px;
         }
 
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
         /* ============================================
            NAVBAR
            ============================================ */
@@ -369,7 +374,7 @@
         }
 
         /* ============================================
-           HERO IMAGE - IA BANNER INTERATIVO (NOVO)
+           HERO IMAGE - IA BANNER INTERATIVO
            ============================================ */
         .hero-image {
             position: relative;
@@ -1687,7 +1692,7 @@
         }
 
         /* ============================================
-           FOOTER
+           FOOTER (ATUALIZADO)
            ============================================ */
         .footer {
             padding: 60px 0 30px;
@@ -1727,6 +1732,7 @@
             max-width: 300px;
             font-size: 14px;
             line-height: 1.8;
+            color: var(--gray);
         }
 
         .social-links {
@@ -1789,6 +1795,14 @@
             font-size: 14px;
             flex-wrap: wrap;
             gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: var(--gray);
+        }
+
+        .footer-bottom p .heart {
+            color: var(--secondary);
         }
 
         .footer-legal {
@@ -2182,7 +2196,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- NOVO BANNER IA INTERATIVO -->
+                    <!-- IA BANNER -->
                     <div class="ia-banner">
                         <div class="ia-header">
                             <span class="ia-status">
@@ -2265,7 +2279,6 @@
                         </div>
                     </div>
 
-                    <!-- Elementos flutuantes -->
                     <div class="floating-element element-1">
                         <i class="fas fa-robot"></i>
                         <span>IA Ativa 24/7</span>
@@ -2822,7 +2835,7 @@
     </div>
 
     <!-- ==========================================
-    FOOTER
+    FOOTER (ATUALIZADO COM SEUS TEXTOS)
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2832,7 +2845,9 @@
                         <i class="fas fa-cash-register"></i>
                     </div>
                     <span>CyvroTech <small>PDV<sup>IA</sup></small></span>
-                    <p>O sistema de PDV mais inteligente do Brasil. Transforme sua loja com o poder da inteligência artificial.</p>
+                    <p>
+                        O sistema de PDV mais inteligente do Brasil. Transforme sua loja com o poder da inteligência artificial.
+                    </p>
                     <div class="social-links">
                         <a href="#" onclick="mostrarToast('🔗 LinkedIn em breve!', 'info')"><i class="fab fa-linkedin"></i></a>
                         <a href="#" onclick="mostrarToast('🔗 YouTube em breve!', 'info')"><i class="fab fa-youtube"></i></a>
@@ -2841,6 +2856,7 @@
                         <a href="#" onclick="mostrarToast('🔗 GitHub em breve!', 'info')"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
+
                 <div class="footer-links">
                     <h4>Produto</h4>
                     <ul>
@@ -2850,6 +2866,7 @@
                         <li><a href="#" onclick="mostrarToast('🔗 API em breve!', 'info')">API</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Empresa</h4>
                     <ul>
@@ -2859,6 +2876,7 @@
                         <li><a href="#" onclick="mostrarToast('📧 Contato: suporte@cyvrotech.com', 'info')">Contato</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-links">
                     <h4>Suporte</h4>
                     <ul>
@@ -2869,143 +2887,133 @@
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 CyvroTech PDV<sup>IA</sup>. Todos os direitos reservados. <span style="color: var(--gray); font-size: 12px;">Feito com <i class="fas fa-heart" style="color: var(--secondary);"></i></span></p>
+                <p>
+                    &copy; 2026 CyvroTech PDV<sup>IA</sup>. Todos os direitos reservados.
+                    <span style="color: var(--gray); font-size: 12px;">
+                        Feito com <i class="fas fa-heart" style="color: var(--secondary);"></i>
+                    </span>
+                </p>
                 <div class="footer-legal">
                     <a href="#" onclick="mostrarToast('📄 Política de Privacidade em breve!', 'info')">Privacidade</a>
                     <a href="#" onclick="mostrarToast('📄 Termos de Uso em breve!', 'info')">Termos</a>
-                    <a href="#" onclick="mostrarToast('🍪 Cookies em breve!', 'info')">Cookies</a>
-                    <a href="#" onclick="mostrarToast('🔒 LGPD em breve!', 'info')">LGPD</a>
+                    <a href="#" onclick="mostrarToast('🍪 Política de Cookies em breve!', 'info')">Cookies</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- ==========================================
-    JAVASCRIPT
+    SCRIPTS
     ========================================== -->
     <script>
-        // =============================================
+        // ============================================
         // NAVEGAÇÃO ENTRE PÁGINAS
-        // =============================================
+        // ============================================
         function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(el => {
-                el.classList.remove('active');
+            // Esconde todas as páginas
+            document.querySelectorAll('.page-section').forEach(function(section) {
+                section.classList.remove('active');
             });
 
-            const target = document.getElementById('page-' + pageId);
+            // Mostra a página selecionada
+            var target = document.getElementById('page-' + pageId);
             if (target) {
                 target.classList.add('active');
             }
 
-            document.querySelectorAll('.nav-menu a').forEach(el => {
-                el.classList.remove('active');
+            // Atualiza link ativo na navbar
+            document.querySelectorAll('.nav-menu a').forEach(function(link) {
+                link.classList.remove('active');
+                var linkPage = link.getAttribute('onclick');
+                if (linkPage && linkPage.includes("'" + pageId + "'")) {
+                    link.classList.add('active');
+                }
             });
-            const navItem = document.getElementById('nav-' + pageId);
-            if (navItem) {
-                navItem.classList.add('active');
-            }
 
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            // Fecha menu mobile
+            document.getElementById('navMenu').classList.remove('active');
+            document.getElementById('hamburger').classList.remove('active');
+
+            // Scroll para o topo da página
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // =============================================
-        // MOBILE MENU
-        // =============================================
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        // ============================================
+        // HAMBURGER MENU
+        // ============================================
+        document.getElementById('hamburger').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('navMenu').classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+        // Fecha o menu ao clicar em um link (mobile)
+        document.querySelectorAll('.nav-menu a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navMenu').classList.remove('active');
+                document.getElementById('hamburger').classList.remove('active');
             });
         });
 
-        // =============================================
+        // ============================================
         // NAVBAR SCROLL EFFECT
-        // =============================================
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', () => {
+        // ============================================
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-        });
 
-        // =============================================
-        // BOTÃO VOLTAR AO TOPO
-        // =============================================
-        const btnTopo = document.getElementById('btnTopo');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
+            // Botão "Voltar ao Topo"
+            var btnTopo = document.getElementById('btnTopo');
+            if (window.scrollY > 400) {
                 btnTopo.classList.add('show');
             } else {
                 btnTopo.classList.remove('show');
             }
         });
 
-        // =============================================
-        // IA BANNER - ANIMAÇÃO E ATUALIZAÇÃO
-        // =============================================
-        function atualizarIA() {
-            const btn = document.querySelector('.ia-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Atualizando...';
-            btn.disabled = true;
+        // ============================================
+        // TOAST
+        // ============================================
+        var toastTimeout;
 
-            setTimeout(() => {
-                // Simula atualização dos dados
-                const vendas = (Math.random() * 5000 + 10000).toFixed(0);
-                const clientes = Math.floor(Math.random() * 200 + 300);
-                const ticket = (Math.random() * 50 + 60).toFixed(2);
-                const previsao = (Math.random() * 5000 + 13000).toFixed(0);
+        function mostrarToast(mensagem, tipo) {
+            var toast = document.getElementById('toast');
+            var toastMessage = document.getElementById('toastMessage');
+            var toastIcon = document.getElementById('toastIcon');
 
-                document.getElementById('metricVendas').textContent = 'R$ ' + Number(vendas).toLocaleString();
-                document.getElementById('metricClientes').textContent = clientes;
-                document.getElementById('metricTicket').textContent = 'R$ ' + ticket;
-                document.getElementById('metricPrevisao').textContent = 'R$ ' + Number(previsao).toLocaleString();
+            toast.className = 'toast';
+            if (tipo === 'success') {
+                toast.classList.add('success');
+                toastIcon.className = 'fas fa-check-circle';
+            } else if (tipo === 'error') {
+                toast.classList.add('error');
+                toastIcon.className = 'fas fa-exclamation-circle';
+            } else {
+                toast.classList.add('info');
+                toastIcon.className = 'fas fa-info-circle';
+            }
 
-                const progress = Math.min(100, (vendas / 15000) * 100);
-                document.getElementById('progressFill').style.width = progress + '%';
-                document.getElementById('progressText').textContent =
-                    'R$ ' + Number(vendas).toLocaleString() + ' de R$ 15.000';
+            toastMessage.textContent = mensagem;
+            toast.classList.add('show');
 
-                document.getElementById('iaTime').textContent = 'agora';
-
-                btn.innerHTML = '<i class="fas fa-check"></i> Atualizado!';
-                btn.style.background = 'rgba(16, 185, 129, 0.2)';
-                btn.style.color = '#10B981';
-                btn.style.borderColor = 'rgba(16, 185, 129, 0.3)';
-
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.style.color = '';
-                    btn.style.borderColor = '';
-                    btn.disabled = false;
-                }, 1500);
-
-                mostrarToast('✅ IA atualizada com novos insights!', 'success');
-            }, 1200);
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(function() {
+                fecharToast();
+            }, 5000);
         }
 
-        // Atualiza automaticamente a cada 30 segundos
-        setInterval(atualizarIA, 30000);
+        function fecharToast() {
+            document.getElementById('toast').classList.remove('show');
+        }
 
-        // =============================================
+        // ============================================
         // MODAL TESTE GRÁTIS
-        // =============================================
+        // ============================================
         function abrirModalTeste() {
             document.getElementById('modalTeste').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3016,129 +3024,198 @@
             document.body.style.overflow = '';
         }
 
-        function enviarTeste(e) {
-            e.preventDefault();
-            const nome = document.getElementById('nomeTeste').value;
-            const email = document.getElementById('emailTeste').value;
-
-            const btn = document.getElementById('btnEnviarTeste');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            btn.disabled = true;
-
-            setTimeout(() => {
+        // Fecha modal ao clicar fora
+        document.getElementById('modalTeste').addEventListener('click', function(e) {
+            if (e.target === this) {
                 fecharModalTeste();
-                mostrarToast(`✅ Obrigado ${nome}! Seu teste grátis foi iniciado. Enviaremos instruções para ${email}`,
-                    'success');
-                btn.innerHTML = originalText;
+            }
+        });
+
+        // ============================================
+        // ENVIAR FORM TESTE
+        // ============================================
+        function enviarTeste(event) {
+            event.preventDefault();
+
+            var nome = document.getElementById('nomeTeste').value.trim();
+            var email = document.getElementById('emailTeste').value.trim();
+
+            if (!nome || !email) {
+                mostrarToast('Por favor, preencha nome e e-mail.', 'error');
+                return false;
+            }
+
+            var btn = document.getElementById('btnEnviarTeste');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            setTimeout(function() {
+                btn.innerHTML = '<i class="fas fa-gem"></i> Iniciar Teste Grátis';
                 btn.disabled = false;
+                fecharModalTeste();
+                mostrarToast('🎉 Teste grátis iniciado! Verifique seu e-mail.', 'success');
                 document.getElementById('formTeste').reset();
             }, 1500);
 
             return false;
         }
 
-        // =============================================
-        // TOAST NOTIFICATION
-        // =============================================
-        function mostrarToast(mensagem, tipo = 'success') {
-            const toast = document.getElementById('toast');
-            const icon = document.getElementById('toastIcon');
-            const message = document.getElementById('toastMessage');
-
-            const icons = {
-                success: 'fas fa-check-circle',
-                error: 'fas fa-exclamation-circle',
-                info: 'fas fa-info-circle'
-            };
-
-            icon.className = icons[tipo] || icons.info;
-            message.textContent = mensagem;
-            toast.className = 'toast show ' + tipo;
-
-            clearTimeout(window.toastTimeout);
-            window.toastTimeout = setTimeout(() => {
-                fecharToast();
-            }, 5000);
-        }
-
-        function fecharToast() {
-            document.getElementById('toast').classList.remove('show');
-            clearTimeout(window.toastTimeout);
-        }
-
-        // =============================================
+        // ============================================
         // WHATSAPP
-        // =============================================
+        // ============================================
         function abrirWhatsApp() {
-            const numero = '5584991612793';
-            const mensagem = 'Olá! Gostaria de saber mais sobre o CyvroTech PDV^IA.';
-            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, '_blank');
+            var numero = '5584991612793';
+            var mensagem = 'Olá! Gostaria de saber mais sobre o CyvroTech PDV^IA.';
+            var url = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(mensagem);
+            window.open(url, '_blank');
         }
 
-        // =============================================
-        // ANIMAÇÃO DE ENTRADA
-        // =============================================
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ============================================
+        // ATUALIZAR IA (SIMULAÇÃO)
+        // ============================================
+        function atualizarIA() {
+            var btn = document.querySelector('.ia-btn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Atualizando...';
+            btn.disabled = true;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+            setTimeout(function() {
+                var valores = [
+                    'R$ 13.421',
+                    'R$ 11.987',
+                    'R$ 14.203',
+                    'R$ 12.847'
+                ];
+                var metricVendas = document.getElementById('metricVendas');
+                var atual = metricVendas.textContent;
+                var novo = valores[Math.floor(Math.random() * valores.length)];
+                while (novo === atual) {
+                    novo = valores[Math.floor(Math.random() * valores.length)];
                 }
-            });
-        }, observerOptions);
+                metricVendas.textContent = novo;
 
-        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card, .module-card').forEach((el,
-            index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
-            observer.observe(el);
+                var clientes = Math.floor(Math.random() * 100) + 300;
+                document.getElementById('metricClientes').textContent = clientes;
+
+                var ticket = (Math.random() * 40 + 70).toFixed(2);
+                document.getElementById('metricTicket').textContent = 'R$ ' + ticket;
+
+                var previsao = (Math.random() * 5000 + 13000).toFixed(0);
+                document.getElementById('metricPrevisao').textContent = 'R$ ' + previsao;
+
+                var meta = 15000;
+                var vendasNum = parseFloat(novo.replace('R$ ', '').replace('.', ''));
+                var percentual = Math.min((vendasNum / meta) * 100, 100);
+                document.getElementById('progressFill').style.width = percentual + '%';
+                document.getElementById('progressText').textContent = 'R$ ' + vendasNum.toFixed(0) + ' de R$ 15.000';
+
+                var agora = new Date();
+                var hora = String(agora.getHours()).padStart(2, '0');
+                var minuto = String(agora.getMinutes()).padStart(2, '0');
+                document.getElementById('iaTime').textContent = hora + ':' + minuto;
+
+                btn.innerHTML = '<i class="fas fa-sync"></i> Atualizar IA';
+                btn.disabled = false;
+
+                mostrarToast('✅ IA atualizada com sucesso!', 'success');
+            }, 1200);
+        }
+
+        // ============================================
+        // INICIALIZAÇÃO DA IA
+        // ============================================
+        function initIA() {
+            var progressFill = document.getElementById('progressFill');
+            if (progressFill) {
+                progressFill.style.width = '85%';
+            }
+            // Atualiza o relógio
+            var agora = new Date();
+            var hora = String(agora.getHours()).padStart(2, '0');
+            var minuto = String(agora.getMinutes()).padStart(2, '0');
+            var iaTime = document.getElementById('iaTime');
+            if (iaTime) {
+                iaTime.textContent = hora + ':' + minuto;
+            }
+        }
+
+        // Executa quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            initIA();
         });
 
-        // =============================================
-        // CONTADOR ANIMADO
-        // =============================================
-        function animateCounter(element, target, suffix = '') {
-            let current = 0;
-            const increment = target / 60;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + suffix;
-            }, 20);
+        // ============================================
+        // ANIMAÇÃO DOS NÚMEROS (ESTATÍSTICAS)
+        // ============================================
+        // Observador para animar números quando entrarem em viewport
+        if (window.IntersectionObserver) {
+            var statsObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var el = entry.target;
+                        var target = el.getAttribute('data-target');
+                        if (target) {
+                            // Se já foi animado, não faz nada
+                            if (el.getAttribute('data-animated') === 'true') return;
+
+                            // Para números com sufixo (K, %, +)
+                            var isK = target.includes('K');
+                            var isPercent = target.includes('%');
+                            var isPlus = target.includes('+');
+                            var num = parseFloat(target.replace(/[K%+]/g, ''));
+
+                            if (isK) num = num * 1000;
+                            var duracao = 1500;
+                            var inicio = performance.now();
+
+                            function animarNumero(tempo) {
+                                var progress = Math.min((tempo - inicio) / duracao, 1);
+                                var valor = Math.floor(progress * num);
+                                var texto = valor.toString();
+
+                                if (isK) {
+                                    texto = (valor / 1000).toFixed(1) + 'K';
+                                    if (target.includes('+')) texto = '+' + texto;
+                                } else if (isPercent) {
+                                    texto = valor + '%';
+                                } else if (isPlus) {
+                                    texto = '+' + valor;
+                                }
+
+                                el.textContent = texto;
+
+                                if (progress < 1) {
+                                    requestAnimationFrame(animarNumero);
+                                } else {
+                                    // Valor final
+                                    var finalText = target;
+                                    if (isK) {
+                                        var kVal = (num / 1000).toFixed(1);
+                                        finalText = kVal + 'K';
+                                        if (target.includes('+')) finalText = '+' + finalText;
+                                    } else if (isPercent) {
+                                        finalText = num + '%';
+                                    } else if (isPlus) {
+                                        finalText = '+' + num;
+                                    }
+                                    el.textContent = finalText;
+                                    el.setAttribute('data-animated', 'true');
+                                }
+                            }
+
+                            requestAnimationFrame(animarNumero);
+                        }
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            document.querySelectorAll('.stat-number[data-target]').forEach(function(el) {
+                statsObserver.observe(el);
+            });
         }
 
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const statObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const text = el.textContent;
-                    const num = parseInt(text.replace(/[^0-9]/g, ''));
-                    const suffix = text.replace(/[0-9]/g, '');
-                    if (!isNaN(num)) {
-                        animateCounter(el, num, suffix);
-                    }
-                    statObserver.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statNumbers.forEach(el => statObserver.observe(el));
-
-        console.log('🚀 CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial');
-        console.log('📄 Todas as páginas e botões funcionando!');
-        console.log('💰 Plano: R$ 129,99/mês');
-        console.log('📞 WhatsApp: (84) 99161-2793');
+        console.log('🚀 CyvroTech PDV^IA carregado com sucesso!');
+        console.log('💡 Sistema de PDV com Inteligência Artificial');
+        console.log('📞 Contato: (84) 99161-2793');
     </script>
 
 </body>
