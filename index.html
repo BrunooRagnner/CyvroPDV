@@ -603,6 +603,177 @@
         }
 
         /* ============================================
+           MODULES SECTION
+           ============================================ */
+        .modules-section {
+            padding: 80px 0;
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .module-card {
+            background: var(--dark-light);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .module-card:hover::before {
+            opacity: 1;
+        }
+
+        .module-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 212, 255, 0.2);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .module-card .module-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .module-card .module-icon.blue {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .module-card .module-icon.green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .module-card .module-icon.purple {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--accent);
+        }
+
+        .module-card .module-icon.orange {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .module-card .module-icon.red {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .module-card .module-icon.gold {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold);
+        }
+
+        .module-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+
+        .module-card p {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .module-card .module-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .module-card .module-stats .stat-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .module-card .module-stats .stat-item strong {
+            color: var(--white);
+        }
+
+        .module-card .module-tag {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .module-card .module-tag.ia {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--accent);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .module-card .module-tag.novo {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .module-card .module-tag.popular {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .module-card .module-features {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        .module-card .module-features li {
+            padding: 4px 0;
+            color: var(--gray);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-card .module-features li i {
+            color: var(--primary);
+            font-size: 12px;
+        }
+
+        /* ============================================
            VIDEO SECTION - YouTube EMBED
            ============================================ */
         .video-section {
@@ -1417,6 +1588,10 @@
                 display: none;
             }
 
+            .modules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1484,6 +1659,10 @@
 
             .hero-title {
                 font-size: 34px;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
             }
 
             .features-grid {
@@ -1584,6 +1763,7 @@
             </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a onclick="showPage('home')" id="nav-home" class="active">Início</a></li>
+                <li><a onclick="showPage('modulos')" id="nav-modulos">Módulos</a></li>
                 <li><a onclick="showPage('ajuda')" id="nav-ajuda">Central de Ajuda</a></li>
                 <li><a onclick="showPage('comunidade')" id="nav-comunidade">Comunidade</a></li>
                 <li><a onclick="showPage('documentacao')" id="nav-documentacao">Documentação IA</a></li>
@@ -1697,6 +1877,132 @@
                     <div class="floating-element element-3">
                         <i class="fas fa-users"></i>
                         <span>Perfil de cliente</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULES SECTION (NOVO) -->
+        <section id="modulos" class="modules-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag"><i class="fas fa-cubes"></i> Módulos do Sistema</span>
+                    <h2>Tudo o que sua empresa <span style="color: var(--primary);">precisa</span></h2>
+                    <p>Módulos integrados com IA para gestão completa do seu negócio</p>
+                </div>
+                <div class="modules-grid">
+                    <!-- Módulo: Estoque -->
+                    <div class="module-card">
+                        <span class="module-tag ia"><i class="fas fa-robot"></i> IA Integrada</span>
+                        <div class="module-icon blue"><i class="fas fa-warehouse"></i></div>
+                        <h3>Gestão de Estoque</h3>
+                        <p>Controle inteligente de estoque com previsão de demanda, alertas automáticos e otimização de compras.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Previsão de demanda com IA</li>
+                            <li><i class="fas fa-check"></i> Alertas de estoque crítico</li>
+                            <li><i class="fas fa-check"></i> Sugestões automáticas de compra</li>
+                            <li><i class="fas fa-check"></i> Lote econômico de compra (LEC)</li>
+                            <li><i class="fas fa-check"></i> Controle de validade e lotes</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>100%</strong> otimizado</span>
+                            <span class="stat-item"><strong>30%</strong> redução de estoque parado</span>
+                        </div>
+                    </div>
+
+                    <!-- Módulo: Caixa -->
+                    <div class="module-card">
+                        <span class="module-tag popular"><i class="fas fa-star"></i> Mais Usado</span>
+                        <div class="module-icon green"><i class="fas fa-cash-register"></i></div>
+                        <h3>Controle de Caixa</h3>
+                        <p>Gestão completa do fluxo de caixa com abertura, fechamento, sangrias, suplementos e relatórios inteligentes.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Abertura e fechamento de caixa</li>
+                            <li><i class="fas fa-check"></i> Sangrias e suplementos</li>
+                            <li><i class="fas fa-check"></i> Vendas por forma de pagamento</li>
+                            <li><i class="fas fa-check"></i> Relatórios financeiros com IA</li>
+                            <li><i class="fas fa-check"></i> Histórico completo de movimentações</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>99%</strong> de precisão</span>
+                            <span class="stat-item"><strong>15h</strong> economia semanal</span>
+                        </div>
+                    </div>
+
+                    <!-- Módulo: IA -->
+                    <div class="module-card">
+                        <span class="module-tag ia"><i class="fas fa-brain"></i> Inteligência Artificial</span>
+                        <div class="module-icon purple"><i class="fas fa-robot"></i></div>
+                        <h3>Assistente IA</h3>
+                        <p>Análises preditivas, insights automáticos e recomendações inteligentes para maximizar seus resultados.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Previsão de vendas com IA</li>
+                            <li><i class="fas fa-check"></i> Sugestões de compra automáticas</li>
+                            <li><i class="fas fa-check"></i> Análise de perfil de cliente</li>
+                            <li><i class="fas fa-check"></i> Detecção de anomalias e fraudes</li>
+                            <li><i class="fas fa-check"></i> Otimização de preços inteligente</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>95%</strong> de precisão</span>
+                            <span class="stat-item"><strong>47%</strong> aumento em vendas</span>
+                        </div>
+                    </div>
+
+                    <!-- Módulo: PDV -->
+                    <div class="module-card">
+                        <span class="module-tag novo"><i class="fas fa-rocket"></i> Novidade</span>
+                        <div class="module-icon orange"><i class="fas fa-shopping-cart"></i></div>
+                        <h3>PDV Inteligente</h3>
+                        <p>Ponto de venda rápido e intuitivo com sugestões automáticas de produtos e agilidade no checkout.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Interface rápida e intuitiva</li>
+                            <li><i class="fas fa-check"></i> Sugestões de produtos com IA</li>
+                            <li><i class="fas fa-check"></i> Múltiplas formas de pagamento</li>
+                            <li><i class="fas fa-check"></i> Modo offline com sincronização</li>
+                            <li><i class="fas fa-check"></i> Comandas e pedidos</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>60%</strong> mais rápido</span>
+                            <span class="stat-item"><strong>98%</strong> satisfação</span>
+                        </div>
+                    </div>
+
+                    <!-- Módulo: Clientes -->
+                    <div class="module-card">
+                        <span class="module-tag ia"><i class="fas fa-users"></i> IA Integrada</span>
+                        <div class="module-icon gold"><i class="fas fa-user-tie"></i></div>
+                        <h3>Gestão de Clientes</h3>
+                        <p>Cadastro completo com análise de perfil, histórico de compras e segmentação inteligente.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Perfil de cliente com IA</li>
+                            <li><i class="fas fa-check"></i> Histórico de compras detalhado</li>
+                            <li><i class="fas fa-check"></i> Segmentação e fidelidade</li>
+                            <li><i class="fas fa-check"></i> Análise de sentimento</li>
+                            <li><i class="fas fa-check"></i> Automação de cobrança</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>10K+</strong> clientes gerenciados</span>
+                            <span class="stat-item"><strong>40%</strong> retenção</span>
+                        </div>
+                    </div>
+
+                    <!-- Módulo: Financeiro -->
+                    <div class="module-card">
+                        <span class="module-tag popular"><i class="fas fa-chart-line"></i> Essencial</span>
+                        <div class="module-icon red"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Gestão Financeira</h3>
+                        <p>Controle completo de contas a pagar, a receber, fluxo de caixa e relatórios financeiros com IA.</p>
+                        <ul class="module-features">
+                            <li><i class="fas fa-check"></i> Contas a pagar e receber</li>
+                            <li><i class="fas fa-check"></i> Fluxo de caixa em tempo real</li>
+                            <li><i class="fas fa-check"></i> Relatórios financeiros com IA</li>
+                            <li><i class="fas fa-check"></i> Previsão de fluxo de caixa</li>
+                            <li><i class="fas fa-check"></i> Dashboard de indicadores</li>
+                        </ul>
+                        <div class="module-stats">
+                            <span class="stat-item"><strong>R$ 500K+</strong> gerenciados</span>
+                            <span class="stat-item"><strong>98%</strong> confiabilidade</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1892,6 +2198,94 @@
                         <a href="#" class="btn-outline btn-large">
                             <i class="fas fa-phone"></i> (84) 99163-8173
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==========================================
+    PÁGINA: MÓDULOS (DETALHADO)
+    ========================================== -->
+    <div id="page-modulos" class="page-section">
+        <section class="support-page">
+            <div class="container">
+                <span class="badge-top"><i class="fas fa-cubes"></i> Módulos do Sistema</span>
+                <h1>Conheça todos os <span class="highlight">módulos</span></h1>
+                <p class="subtitle">Cada módulo foi desenvolvido para resolver desafios reais do seu negócio</p>
+            </div>
+        </section>
+        <section class="content-section-support">
+            <div class="container">
+                <!-- Estoque -->
+                <div class="content-card">
+                    <h2><i class="fas fa-warehouse"></i> Gestão de Estoque</h2>
+                    <p>Controle completo do seu estoque com inteligência artificial para otimizar suas compras e reduzir desperdícios.</p>
+                    <h3>📦 Funcionalidades:</h3>
+                    <ul>
+                        <li><strong>Previsão de Demanda:</strong> A IA analisa seu histórico e prevê quais produtos terão maior saída.</li>
+                        <li><strong>Alertas Automáticos:</strong> Receba notificações quando o estoque atingir níveis críticos.</li>
+                        <li><strong>Sugestões de Compra:</strong> O sistema recomenda automaticamente quais produtos comprar e em qual quantidade.</li>
+                        <li><strong>Lote Econômico de Compra (LEC):</strong> Calcule a quantidade ideal por pedido para minimizar custos.</li>
+                        <li><strong>Controle de Validade:</strong> Gerencie produtos com data de validade e receba alertas de vencimento.</li>
+                        <li><strong>Inventário:</strong> Faça contagens físicas e ajuste o estoque com facilidade.</li>
+                    </ul>
+                    <div class="last-updated">
+                        <i class="fas fa-robot"></i> IA integrada: Previsão de demanda com 95% de precisão
+                    </div>
+                </div>
+
+                <!-- Caixa -->
+                <div class="content-card">
+                    <h2><i class="fas fa-cash-register"></i> Controle de Caixa</h2>
+                    <p>Gerencie todo o fluxo financeiro do seu negócio de forma simples e segura.</p>
+                    <h3>💰 Funcionalidades:</h3>
+                    <ul>
+                        <li><strong>Abertura e Fechamento:</strong> Controle total do caixa com registro de valores inicial e final.</li>
+                        <li><strong>Sangrias e Suplementos:</strong> Registre retiradas e adições de dinheiro ao caixa.</li>
+                        <li><strong>Vendas por Forma de Pagamento:</strong> Acompanhe o desempenho de cada forma de pagamento.</li>
+                        <li><strong>Relatórios Financeiros:</strong> Gere relatórios detalhados com análise de tendências.</li>
+                        <li><strong>Histórico Completo:</strong> Acesse todas as movimentações do caixa.</li>
+                        <li><strong>Comprovante de Fechamento:</strong> Imprima comprovante detalhado do fechamento.</li>
+                    </ul>
+                    <div class="last-updated">
+                        <i class="fas fa-robot"></i> IA integrada: Análise de padrões de venda e detecção de anomalias
+                    </div>
+                </div>
+
+                <!-- IA -->
+                <div class="content-card">
+                    <h2><i class="fas fa-robot"></i> Inteligência Artificial</h2>
+                    <p>O coração do sistema CyvroTech. A IA trabalha 24/7 para otimizar seu negócio.</p>
+                    <h3>🧠 Funcionalidades:</h3>
+                    <ul>
+                        <li><strong>Previsão de Vendas:</strong> Projeção precisa de vendas para os próximos 7, 15 e 30 dias.</li>
+                        <li><strong>Sugestões de Compra:</strong> Recomendação automática de produtos para compra.</li>
+                        <li><strong>Perfil de Cliente:</strong> Identifica padrões de compra e segmenta clientes.</li>
+                        <li><strong>Análise de Sentimento:</strong> Entenda como seus clientes percebem seu negócio.</li>
+                        <li><strong>Otimização de Preços:</strong> Sugestão de preços ideais para maximizar lucro.</li>
+                        <li><strong>Detecção de Anomalias:</strong> Identifica comportamentos suspeitos e possíveis fraudes.</li>
+                    </ul>
+                    <div class="last-updated">
+                        <i class="fas fa-brain"></i> IA Generativa integrada para respostas inteligentes
+                    </div>
+                </div>
+
+                <!-- PDV -->
+                <div class="content-card">
+                    <h2><i class="fas fa-shopping-cart"></i> PDV Inteligente</h2>
+                    <p>O ponto de venda mais rápido e intuitivo do mercado.</p>
+                    <h3>🛒 Funcionalidades:</h3>
+                    <ul>
+                        <li><strong>Interface Rápida:</strong> Menos cliques, mais vendas.</li>
+                        <li><strong>Sugestões de Produtos:</strong> A IA sugere produtos complementares em tempo real.</li>
+                        <li><strong>Múltiplas Formas de Pagamento:</strong> Aceite dinheiro, PIX, cartão de crédito e débito.</li>
+                        <li><strong>Modo Offline:</strong> Continue vendendo mesmo sem internet.</li>
+                        <li><strong>Comandas e Pedidos:</strong> Gerencie mesas e pedidos de forma eficiente.</li>
+                        <li><strong>Impressão de Cupom:</strong> Imprima cupons fiscais e comprovantes.</li>
+                    </ul>
+                    <div class="last-updated">
+                        <i class="fas fa-robot"></i> IA integrada: Sugestões em tempo real e análise de perfil
                     </div>
                 </div>
             </div>
@@ -2289,7 +2683,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card').forEach((el, index) => {
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card, .module-card').forEach((el, index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
@@ -2331,9 +2725,10 @@
         statNumbers.forEach(el => statObserver.observe(el));
 
         console.log('🚀 CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial');
-        console.log('📄 Páginas: Início, Central de Ajuda, Comunidade, Documentação IA, Status');
+        console.log('📄 Páginas: Início, Módulos, Central de Ajuda, Comunidade, Documentação IA, Status');
         console.log('🎬 Vídeo do YouTube embutido!');
         console.log('💰 Plano: R$ 129,99/mês');
+        console.log('📦 Módulos: Estoque, Caixa, IA, PDV, Clientes, Financeiro');
     </script>
 
 </body>
