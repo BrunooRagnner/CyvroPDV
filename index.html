@@ -293,13 +293,184 @@
         }
 
         /* ============================================
+           MODAL TESTE GRÁTIS
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark-light);
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 480px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            animation: modalIn 0.4s ease;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content .form-group {
+            margin-bottom: 16px;
+        }
+
+        .modal-content .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            color: var(--gray);
+        }
+
+        .modal-content .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .modal-content .form-group input::placeholder {
+            color: var(--gray);
+            opacity: 0.6;
+        }
+
+        .modal-content .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.08);
+        }
+
+        .modal-content .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-content .modal-close:hover {
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-content .btn-primary {
+            width: 100%;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal-content .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ============================================
+           TOAST NOTIFICATION
+           ============================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 500;
+            background: var(--dark-light);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 10000;
+            max-width: 450px;
+            animation: slideUp 0.3s ease;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary);
+        }
+
+        .toast i {
+            font-size: 1.3rem;
+        }
+
+        .toast .toast-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
            HERO
            ============================================ */
         .hero {
             padding: 160px 0 80px;
             background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                        radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
-                        var(--dark);
+                radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
+                var(--dark);
             position: relative;
             overflow: hidden;
         }
@@ -317,8 +488,15 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 1; }
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
 
         .hero .container {
@@ -349,8 +527,13 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
         }
 
         .hero-title {
@@ -576,8 +759,13 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* ============================================
@@ -1190,7 +1378,7 @@
         .cta {
             padding: 100px 0;
             background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                        var(--dark);
+                var(--dark);
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
@@ -1220,8 +1408,8 @@
         .support-page {
             padding: 140px 0 80px;
             background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-                        radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
-                        var(--dark);
+                radial-gradient(ellipse at 80% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
+                var(--dark);
             position: relative;
             overflow: hidden;
             min-height: 100vh;
@@ -1748,6 +1936,56 @@
 <body>
 
     <!-- ==========================================
+    TOAST NOTIFICATION
+    ========================================== -->
+    <div id="toast" class="toast">
+        <i id="toastIcon" class="fas fa-check-circle"></i>
+        <span id="toastMessage">Mensagem</span>
+        <button class="toast-close" onclick="fecharToast()">&times;</button>
+    </div>
+
+    <!-- ==========================================
+    MODAL TESTE GRÁTIS
+    ========================================== -->
+    <div class="modal-overlay" id="modalTeste">
+        <div class="modal-content">
+            <button class="modal-close" onclick="fecharModalTeste()">&times;</button>
+            <h2 style="text-align:center; margin-bottom:8px; font-size:24px;">
+                <i class="fas fa-rocket" style="color:var(--primary);"></i>
+                Teste Grátis CyvroTech
+            </h2>
+            <p style="text-align:center; color:var(--gray); margin-bottom:24px;">
+                Comece seus <strong style="color:var(--primary);">15 dias grátis</strong> agora. Sem compromisso!
+            </p>
+            <form id="formTeste" onsubmit="return enviarTeste(event)">
+                <div class="form-group">
+                    <label>Nome completo *</label>
+                    <input type="text" id="nomeTeste" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label>E-mail *</label>
+                    <input type="email" id="emailTeste" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" id="telefoneTeste" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group">
+                    <label>Nome da Loja</label>
+                    <input type="text" id="lojaTeste" placeholder="Minha Loja">
+                </div>
+                <button type="submit" class="btn-primary" id="btnEnviarTeste">
+                    <i class="fas fa-gem"></i> Iniciar Teste Grátis
+                </button>
+                <p style="text-align:center; font-size:12px; color:var(--gray); margin-top:12px;">
+                    Ao clicar, você concorda com nossos
+                    <a href="#" style="color:var(--primary); text-decoration:none;">Termos de Uso</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================
     NAVBAR
     ========================================== -->
     <nav class="navbar" id="navbar">
@@ -1768,7 +2006,7 @@
                 <li><a onclick="showPage('comunidade')" id="nav-comunidade">Comunidade</a></li>
                 <li><a onclick="showPage('documentacao')" id="nav-documentacao">Documentação IA</a></li>
                 <li><a onclick="showPage('status')" id="nav-status">Status</a></li>
-                <li><a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 14px;" onclick="showPage('home')">Teste Grátis</a></li>
+                <li><a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 14px;" onclick="abrirModalTeste()">Teste Grátis</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -1782,6 +2020,7 @@
     PÁGINA: HOME
     ========================================== -->
     <div id="page-home" class="page-section active">
+
         <!-- HERO -->
         <section class="hero">
             <div class="container">
@@ -1797,18 +2036,18 @@
                         <span class="highlight-ia">já chegou</span>
                     </h1>
                     <p class="hero-subtitle">
-                        A CyvroTech PDV<sup>IA</sup> é o sistema de ponto de venda mais inteligente do mercado. 
-                        Com inteligência artificial integrada, previsão de demanda, análise de perfil de cliente 
+                        A CyvroTech PDV<sup>IA</sup> é o sistema de ponto de venda mais inteligente do mercado.
+                        Com inteligência artificial integrada, previsão de demanda, análise de perfil de cliente
                         e automação total do seu negócio.
                     </p>
                     <div class="hero-actions">
-                        <a href="#" class="btn-primary btn-large">
+                        <a href="#" class="btn-primary btn-large" onclick="abrirModalTeste()">
                             <i class="fas fa-rocket"></i> Teste Grátis
                         </a>
-                        <a href="#" class="btn-outline btn-large">
+                        <a href="#" class="btn-outline btn-large" onclick="mostrarToast('🎬 Demo disponível em breve!', 'info')">
                             <i class="fas fa-play-circle"></i> Ver Demo
                         </a>
-                        <a href="#" class="btn-secondary btn-large">
+                        <a href="#" class="btn-secondary btn-large" onclick="abrirWhatsApp()">
                             <i class="fas fa-whatsapp"></i> Falar com Especialista
                         </a>
                     </div>
@@ -1882,7 +2121,7 @@
             </div>
         </section>
 
-        <!-- MODULES SECTION (NOVO) -->
+        <!-- MODULES SECTION -->
         <section id="modulos" class="modules-section">
             <div class="container">
                 <div class="section-header">
@@ -1891,7 +2130,6 @@
                     <p>Módulos integrados com IA para gestão completa do seu negócio</p>
                 </div>
                 <div class="modules-grid">
-                    <!-- Módulo: Estoque -->
                     <div class="module-card">
                         <span class="module-tag ia"><i class="fas fa-robot"></i> IA Integrada</span>
                         <div class="module-icon blue"><i class="fas fa-warehouse"></i></div>
@@ -1910,7 +2148,6 @@
                         </div>
                     </div>
 
-                    <!-- Módulo: Caixa -->
                     <div class="module-card">
                         <span class="module-tag popular"><i class="fas fa-star"></i> Mais Usado</span>
                         <div class="module-icon green"><i class="fas fa-cash-register"></i></div>
@@ -1929,7 +2166,6 @@
                         </div>
                     </div>
 
-                    <!-- Módulo: IA -->
                     <div class="module-card">
                         <span class="module-tag ia"><i class="fas fa-brain"></i> Inteligência Artificial</span>
                         <div class="module-icon purple"><i class="fas fa-robot"></i></div>
@@ -1948,7 +2184,6 @@
                         </div>
                     </div>
 
-                    <!-- Módulo: PDV -->
                     <div class="module-card">
                         <span class="module-tag novo"><i class="fas fa-rocket"></i> Novidade</span>
                         <div class="module-icon orange"><i class="fas fa-shopping-cart"></i></div>
@@ -1967,7 +2202,6 @@
                         </div>
                     </div>
 
-                    <!-- Módulo: Clientes -->
                     <div class="module-card">
                         <span class="module-tag ia"><i class="fas fa-users"></i> IA Integrada</span>
                         <div class="module-icon gold"><i class="fas fa-user-tie"></i></div>
@@ -1986,7 +2220,6 @@
                         </div>
                     </div>
 
-                    <!-- Módulo: Financeiro -->
                     <div class="module-card">
                         <span class="module-tag popular"><i class="fas fa-chart-line"></i> Essencial</span>
                         <div class="module-icon red"><i class="fas fa-chart-pie"></i></div>
@@ -2017,11 +2250,7 @@
                     <p>Assista ao vídeo e descubra como a IA pode transformar seu negócio</p>
                 </div>
                 <div class="video-wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/oVoHWBpm2zw" 
-                        title="CyvroTech PDV IA - Demonstração do Sistema"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                    <iframe src="https://www.youtube.com/embed/oVoHWBpm2zw" title="CyvroTech PDV IA - Demonstração do Sistema" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
             </div>
@@ -2120,7 +2349,7 @@
                             <li><i class="fas fa-star"></i> Integração com Marketplaces</li>
                             <li><i class="fas fa-star"></i> Dashboard Personalizado</li>
                         </ul>
-                        <a href="#" class="plan-btn">
+                        <a href="#" class="plan-btn" onclick="abrirModalTeste()">
                             <i class="fas fa-gem"></i> Começar Grátis
                         </a>
                     </div>
@@ -2186,16 +2415,16 @@
                     <h2>Pronto para vender <span style="color: var(--primary);">com inteligência</span>?</h2>
                     <p>Junte-se a mais de 100 lojas que já estão usando a IA da CyvroTech PDV<sup>IA</sup></p>
                     <div class="cta-actions">
-                        <a href="#" class="btn-primary btn-large">
+                        <a href="#" class="btn-primary btn-large" onclick="abrirModalTeste()">
                             <i class="fas fa-gem"></i> Começar Agora
                         </a>
-                        <a href="#" class="btn-secondary btn-large">
+                        <a href="#" class="btn-secondary btn-large" onclick="mostrarToast('📅 Agendamento disponível em breve!', 'info')">
                             <i class="fas fa-calendar-alt"></i> Agendar Demonstração
                         </a>
-                        <a href="#" class="btn-outline btn-large">
+                        <a href="#" class="btn-outline btn-large" onclick="abrirWhatsApp()">
                             <i class="fas fa-phone"></i> (84) 99161-2793
                         </a>
-                        <a href="#" class="btn-outline btn-large">
+                        <a href="#" class="btn-outline btn-large" onclick="abrirWhatsApp()">
                             <i class="fas fa-phone"></i> (84) 99163-8173
                         </a>
                     </div>
@@ -2446,7 +2675,7 @@
                     <p>Inscreva-se para receber alertas sobre o status do sistema:</p>
                     <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
                         <input type="email" placeholder="Seu e-mail" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--white);font-size:16px;min-width:200px;">
-                        <button class="btn-primary" style="padding:12px 24px;">
+                        <button class="btn-primary" style="padding:12px 24px;" onclick="mostrarToast('✅ Inscrição realizada com sucesso!', 'success')">
                             <i class="fas fa-envelope"></i> Inscrever
                         </button>
                     </div>
@@ -2471,7 +2700,7 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" onclick="abrirWhatsApp()"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
@@ -2523,18 +2752,15 @@
         // NAVEGAÇÃO ENTRE PÁGINAS
         // =============================================
         function showPage(pageId) {
-            // Esconde todas as páginas
             document.querySelectorAll('.page-section').forEach(el => {
                 el.classList.remove('active');
             });
 
-            // Mostra a página selecionada
             const target = document.getElementById('page-' + pageId);
             if (target) {
                 target.classList.add('active');
             }
 
-            // Atualiza o menu ativo
             document.querySelectorAll('.nav-menu a').forEach(el => {
                 el.classList.remove('active');
             });
@@ -2543,11 +2769,8 @@
                 navItem.classList.add('active');
             }
 
-            // Fecha o menu mobile
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
-
-            // Scroll para o topo
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -2596,6 +2819,80 @@
                 }
             });
         });
+
+        // =============================================
+        // MODAL TESTE GRÁTIS
+        // =============================================
+        function abrirModalTeste() {
+            document.getElementById('modalTeste').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModalTeste() {
+            document.getElementById('modalTeste').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function enviarTeste(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nomeTeste').value;
+            const email = document.getElementById('emailTeste').value;
+            const telefone = document.getElementById('telefoneTeste').value;
+            const loja = document.getElementById('lojaTeste').value;
+
+            const btn = document.getElementById('btnEnviarTeste');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                fecharModalTeste();
+                mostrarToast(`✅ Obrigado ${nome}! Seu teste grátis foi iniciado. Enviaremos instruções para ${email}`, 'success');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                document.getElementById('formTeste').reset();
+            }, 1500);
+
+            return false;
+        }
+
+        // =============================================
+        // TOAST NOTIFICATION
+        // =============================================
+        function mostrarToast(mensagem, tipo = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const message = document.getElementById('toastMessage');
+
+            const icons = {
+                success: 'fas fa-check-circle',
+                error: 'fas fa-exclamation-circle',
+                info: 'fas fa-info-circle'
+            };
+
+            icon.className = icons[tipo] || icons.info;
+            message.textContent = mensagem;
+            toast.className = 'toast show ' + tipo;
+
+            clearTimeout(window.toastTimeout);
+            window.toastTimeout = setTimeout(() => {
+                fecharToast();
+            }, 5000);
+        }
+
+        function fecharToast() {
+            document.getElementById('toast').classList.remove('show');
+            clearTimeout(window.toastTimeout);
+        }
+
+        // =============================================
+        // WHATSAPP
+        // =============================================
+        function abrirWhatsApp() {
+            const numero = '5584991612793';
+            const mensagem = 'Olá! Gostaria de saber mais sobre o CyvroTech PDV^IA.';
+            window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
 
         // =============================================
         // PDV SIMULATOR - BOTÃO PAGAR
@@ -2683,7 +2980,8 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card, .module-card').forEach((el, index) => {
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .content-card, .module-card').forEach((el,
+        index) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = `all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${index * 0.1}s`;
@@ -2725,10 +3023,9 @@
         statNumbers.forEach(el => statObserver.observe(el));
 
         console.log('🚀 CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial');
-        console.log('📄 Páginas: Início, Módulos, Central de Ajuda, Comunidade, Documentação IA, Status');
-        console.log('🎬 Vídeo do YouTube embutido!');
+        console.log('📄 Todas as páginas e botões funcionando!');
         console.log('💰 Plano: R$ 129,99/mês');
-        console.log('📦 Módulos: Estoque, Caixa, IA, PDV, Clientes, Financeiro');
+        console.log('📞 WhatsApp: (84) 99161-2793');
     </script>
 
 </body>
