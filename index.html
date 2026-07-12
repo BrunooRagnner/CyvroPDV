@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyvroTech PDV^IA - Sistema de PDV com Inteligência Artificial</title>
+    
+    <!-- SEO META TAGS -->
+    <meta name="description" content="CyvroTech PDV^IA - Sistema de Ponto de Venda com Inteligência Artificial. Gestão de estoque, caixa, clientes e relatórios com IA." />
+    <meta name="keywords" content="PDV, sistema PDV, ponto de venda, IA, inteligência artificial, gestão de estoque, caixa, cliente, varejo" />
+    <meta name="author" content="CyvroTech" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="CyvroTech PDV^IA - PDV com Inteligência Artificial" />
+    <meta property="og:description" content="O sistema de PDV mais inteligente do Brasil. Com IA integrada para previsão de demanda, perfil de cliente e muito mais." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cyvrotech.com" />
+    <meta property="og:image" content="https://cyvrotech.com/og-image.jpg" />
+    
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CyvroTech PDV^IA - PDV com Inteligência Artificial" />
+    <meta name="twitter:description" content="O sistema de PDV mais inteligente do Brasil com IA integrada." />
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZAAAAZ5JREFUWEftlzFKA0EUhr9dIgoW2QgaBYWgrTew9BSK4hksvYSgpUnhLUxtYSmCKhbZxELRwjZxC4L5JhPLzGYnO5vZmeDHzmZ33nv//H8yLyH8iSn5sT6I2AvpAQ+YhaG8mHmW+yHdQhFj4USz2k6HevQHItZ2BJmB3+ZbBk/K3QXOsXqI7xDp9wCSBsZKKfrhL4fIB5BOGYbYGeLxOogPizN6YB8XrMy33BsQdpxBWHrLSWCZ2dvM3YhcBLK4hWe8BprcBzBxWxNAbW9CRGb6QPhd3V2KDUCIqOoJGDjpDEK8x0APNsh27uISQuwLlLwQkCxXwDhrgC/0sGYrn0H21hr0AI6gxyYen7xO4h8gJkXbO5WYV4H9AFnsdA/1AFqIXnTasXHmQpwQOIC70fUdCiAHO1ITJgjqAxU7xI+bMe4dAZ4BTN0KfoGx1gGZ5v5GC8BRyG43tZt6ZmvBhBj4xjmG6gXgm62AZ53TCQIBQpoHvWJ4ygLQCAFkVsD/92F7A6INwNwJ4UX0AE2ga8i5B2CiHjC0W8GtBTWAGMamDVhaG+e46LmzCGPvC5gK7GPf9K2A4z8EfAEI2CJmHrcS3QAAAABJRU5ErkJggg==" />
+    
+    <!-- FONTS & ICONS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         /* ============================================
            RESET & BASE
@@ -26,12 +50,197 @@
             --dark: #0A0E1A;
             --dark-light: #1A1F35;
             --gray: #64748B;
-            --light-gray: #F1F5F9;
+            --gray-light: #E2E8F0;
+            --gray-bg: #F1F5F9;
             --white: #FFFFFF;
             --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
             --radius: 16px;
             --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Dark Mode Variables */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFF;
+            --bg-card: #FFFFFF;
+            --text-primary: #0A0E1A;
+            --text-secondary: #1A1F35;
+            --border-color: #E2E8F0;
+            --bg-navbar: rgba(255, 255, 255, 0.95);
+        }
+
+        /* ===== DARK MODE ===== */
+        body.dark-mode {
+            --bg-primary: #0A0E1A;
+            --bg-secondary: #0A0E1A;
+            --bg-card: #1A1F35;
+            --text-primary: #F1F5F9;
+            --text-secondary: #E2E8F0;
+            --border-color: #2A2F45;
+            --bg-navbar: rgba(10, 14, 26, 0.95);
+        }
+
+        body.dark-mode .navbar {
+            background: var(--bg-navbar);
+            border-bottom: 1px solid var(--border-color);
+        }
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #0A0E1A 0%, #1A1F35 100%);
+        }
+        body.dark-mode .modules-section,
+        body.dark-mode .features,
+        body.dark-mode .testimonials,
+        body.dark-mode .logos {
+            background: var(--bg-primary);
+        }
+        body.dark-mode .module-card,
+        body.dark-mode .feature-card,
+        body.dark-mode .testimonial-card,
+        body.dark-mode .pricing-card,
+        body.dark-mode .content-card {
+            background: var(--bg-card);
+            border-color: var(--border-color);
+        }
+        body.dark-mode .pricing {
+            background: var(--bg-primary);
+        }
+        body.dark-mode .video-section {
+            background: var(--bg-primary);
+        }
+        body.dark-mode .support-page {
+            background: linear-gradient(135deg, #0A0E1A 0%, #1A1F35 100%);
+        }
+        body.dark-mode .content-section-support {
+            background: var(--bg-primary);
+        }
+        body.dark-mode .hero-title,
+        body.dark-mode .section-header h2,
+        body.dark-mode .module-card h3,
+        body.dark-mode .feature-card h3 {
+            color: var(--text-primary);
+        }
+        body.dark-mode .hero-subtitle,
+        body.dark-mode .section-header p,
+        body.dark-mode .module-card p,
+        body.dark-mode .feature-card p {
+            color: var(--gray);
+        }
+        body.dark-mode .stat-number {
+            color: var(--text-primary);
+        }
+        body.dark-mode .ia-banner {
+            background: linear-gradient(145deg, #0A0E1A 0%, #1A1F35 100%);
+        }
+        body.dark-mode .faq-item {
+            border-color: var(--border-color);
+        }
+        body.dark-mode .faq-item .faq-question {
+            color: var(--text-primary);
+        }
+        body.dark-mode .faq-item .faq-answer {
+            color: var(--gray);
+        }
+        body.dark-mode .content-card h2,
+        body.dark-mode .content-card h3 {
+            color: var(--text-primary);
+        }
+        body.dark-mode .content-card p,
+        body.dark-mode .content-card ul li {
+            color: var(--gray);
+        }
+        body.dark-mode .support-page h1 {
+            color: var(--text-primary);
+        }
+        body.dark-mode .support-page .subtitle {
+            color: var(--gray);
+        }
+        body.dark-mode .modal-content {
+            background: var(--bg-card);
+        }
+        body.dark-mode .modal-content h2 {
+            color: var(--text-primary);
+        }
+        body.dark-mode .modal-content p {
+            color: var(--gray);
+        }
+        body.dark-mode .modal-content .form-group input {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        body.dark-mode .modal-content .form-group label {
+            color: var(--gray);
+        }
+        body.dark-mode .toast {
+            background: var(--bg-card);
+            border-color: var(--border-color);
+        }
+        body.dark-mode .footer {
+            background: #0A0E1A;
+        }
+        body.dark-mode .nav-brand small {
+            -webkit-text-fill-color: var(--gray);
+        }
+        body.dark-mode .hamburger span {
+            background: var(--text-primary);
+        }
+        body.dark-mode .nav-menu a {
+            color: var(--gray);
+        }
+        body.dark-mode .nav-menu a:hover {
+            color: var(--primary);
+        }
+        body.dark-mode .btn-outline {
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        body.dark-mode .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        body.dark-mode .floating-element {
+            background: var(--bg-card);
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+        body.dark-mode .ia-banner .ia-metric {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        body.dark-mode .ia-banner .ia-metric:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        body.dark-mode .ia-banner .ia-insight {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        body.dark-mode .ia-banner .ia-insight:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        body.dark-mode .ia-banner .ia-insight .insight-text strong {
+            color: var(--text-primary);
+        }
+        body.dark-mode .pricing-card .plan-price {
+            color: var(--text-primary);
+        }
+        body.dark-mode .pricing-card .plan-description {
+            color: var(--gray);
+        }
+        body.dark-mode .pricing-card .plan-features li {
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+        body.dark-mode .status-list li {
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+        body.dark-mode .last-updated {
+            background: var(--bg-primary);
+            color: var(--gray);
+        }
+        body.dark-mode .testimonial-card p {
+            color: var(--text-primary);
+        }
+        body.dark-mode .testimonial-author strong {
+            color: var(--text-primary);
         }
 
         html {
@@ -40,10 +249,11 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--white);
-            color: var(--dark);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
 
         .container {
@@ -59,7 +269,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--light-gray);
+            background: var(--gray-bg);
         }
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
@@ -67,6 +277,20 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
+        }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            z-index: 10001;
+            transition: width 0.1s;
         }
 
         /* ============================================
@@ -100,8 +324,8 @@
             gap: 10px;
             padding: 14px 32px;
             background: transparent;
-            color: var(--dark);
-            border: 2px solid #E2E8F0;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
             border-radius: 50px;
             font-weight: 600;
             font-size: 16px;
@@ -149,6 +373,22 @@
             font-size: 14px;
         }
 
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--gray);
+            padding: 8px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(0, 212, 255, 0.08);
+            color: var(--primary);
+        }
+
         /* ============================================
            NAVBAR
            ============================================ */
@@ -159,10 +399,10 @@
             right: 0;
             z-index: 1000;
             padding: 16px 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-navbar);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
@@ -182,7 +422,7 @@
             gap: 12px;
             font-size: 22px;
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
             text-decoration: none;
             cursor: pointer;
         }
@@ -250,7 +490,7 @@
             display: block;
             width: 28px;
             height: 2px;
-            background: var(--dark);
+            background: var(--text-primary);
             transition: var(--transition);
         }
 
@@ -265,6 +505,12 @@
 
         .page-section.active {
             display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ============================================
@@ -275,6 +521,7 @@
             background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 100%);
             position: relative;
             overflow: hidden;
+            transition: background 0.3s;
         }
 
         .hero .container {
@@ -305,13 +552,8 @@
         }
 
         @keyframes pulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .hero-title {
@@ -320,7 +562,7 @@
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -2px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .hero-title .highlight {
@@ -365,7 +607,7 @@
         .stat-number {
             font-size: 28px;
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .stat-label {
@@ -407,12 +649,8 @@
         }
 
         @keyframes rotateGlow {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .ia-banner .ia-header {
@@ -442,15 +680,8 @@
         }
 
         @keyframes pulseDot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
         }
 
         .ia-banner .ia-header .ia-badge {
@@ -648,8 +879,8 @@
 
         .floating-element {
             position: absolute;
-            background: var(--white);
-            border: 1px solid #E2E8F0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             padding: 12px 20px;
             border-radius: 12px;
             box-shadow: var(--shadow);
@@ -658,7 +889,7 @@
             gap: 10px;
             font-weight: 600;
             font-size: 13px;
-            color: var(--dark);
+            color: var(--text-primary);
             animation: float 3s ease-in-out infinite;
         }
 
@@ -691,13 +922,8 @@
         }
 
         @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         .ai-badge {
@@ -719,8 +945,9 @@
            ============================================ */
         .modules-section {
             padding: 80px 0;
-            background: var(--white);
-            border-top: 1px solid #E2E8F0;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            transition: background 0.3s;
         }
 
         .modules-grid {
@@ -731,10 +958,10 @@
         }
 
         .module-card {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 32px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
             position: relative;
         }
@@ -790,7 +1017,7 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .module-card p {
@@ -807,7 +1034,7 @@
         }
 
         .module-card .module-stats .stat-item {
-            background: var(--light-gray);
+            background: var(--gray-bg);
             padding: 4px 12px;
             border-radius: 6px;
             font-size: 12px;
@@ -815,7 +1042,7 @@
         }
 
         .module-card .module-stats .stat-item strong {
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .module-card .module-tag {
@@ -868,9 +1095,10 @@
            ============================================ */
         .video-section {
             padding: 80px 0;
-            background: var(--light-gray);
-            border-top: 1px solid #E2E8F0;
-            border-bottom: 1px solid #E2E8F0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s;
         }
 
         .video-wrapper {
@@ -903,7 +1131,7 @@
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 12px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .video-section .video-title p {
@@ -920,9 +1148,10 @@
            ============================================ */
         .logos {
             padding: 60px 0;
-            background: var(--white);
-            border-top: 1px solid #E2E8F0;
-            border-bottom: 1px solid #E2E8F0;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s;
         }
 
         .logos-title {
@@ -959,7 +1188,8 @@
            ============================================ */
         .features {
             padding: 100px 0;
-            background: var(--white);
+            background: var(--bg-primary);
+            transition: background 0.3s;
         }
 
         .section-header {
@@ -987,7 +1217,7 @@
             font-weight: 800;
             margin-bottom: 16px;
             letter-spacing: -1px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .section-header p {
@@ -1003,9 +1233,9 @@
 
         .feature-card {
             padding: 40px 32px;
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
@@ -1031,7 +1261,7 @@
         .feature-card h3 {
             font-size: 20px;
             margin-bottom: 12px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .feature-card p {
@@ -1055,7 +1285,8 @@
            ============================================ */
         .pricing {
             padding: 100px 0;
-            background: var(--light-gray);
+            background: var(--bg-secondary);
+            transition: background 0.3s;
         }
 
         .pricing-grid {
@@ -1067,10 +1298,10 @@
         }
 
         .pricing-card {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 48px 40px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -1113,7 +1344,7 @@
             font-size: 48px;
             font-weight: 900;
             margin: 16px 0 8px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .pricing-card .plan-price .currency {
@@ -1143,9 +1374,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--dark);
+            color: var(--text-primary);
             font-size: 14px;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .pricing-card .plan-features li:last-child {
@@ -1193,65 +1424,142 @@
            ============================================ */
         .testimonials {
             padding: 100px 0;
-            background: var(--white);
+            background: var(--bg-primary);
+            transition: background 0.3s;
         }
 
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .testimonials-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
             gap: 30px;
         }
 
-        .testimonial-card {
-            background: var(--white);
+        .testimonials-track .testimonial-card {
+            min-width: calc(33.33% - 20px);
+            flex-shrink: 0;
+            background: var(--bg-card);
             padding: 32px;
             border-radius: var(--radius);
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
-        .testimonial-card:hover {
+        .testimonials-track .testimonial-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-hover);
             border-color: var(--primary);
         }
 
-        .stars {
+        .testimonials-track .testimonial-card .stars {
             color: #FFD700;
             margin-bottom: 16px;
             font-size: 14px;
             letter-spacing: 2px;
         }
 
-        .testimonial-card p {
+        .testimonials-track .testimonial-card p {
             font-size: 16px;
             line-height: 1.8;
-            color: var(--dark);
+            color: var(--text-primary);
             margin-bottom: 20px;
         }
 
-        .testimonial-author {
+        .testimonials-track .testimonial-card .testimonial-author {
             display: flex;
             align-items: center;
             gap: 14px;
         }
 
-        .testimonial-author img {
+        .testimonials-track .testimonial-card .testimonial-author img {
             width: 48px;
             height: 48px;
             border-radius: 50%;
             border: 2px solid var(--primary);
         }
 
-        .testimonial-author strong {
+        .testimonials-track .testimonial-card .testimonial-author strong {
             display: block;
             font-size: 15px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
-        .testimonial-author span {
+        .testimonials-track .testimonial-card .testimonial-author span {
             font-size: 13px;
             color: var(--gray);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .carousel-controls button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-controls button:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            padding-left: 8px;
+        }
+
+        .faq-item .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+
+        .faq-item .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            color: var(--gray);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding-top: 12px;
+        }
+
+        .faq-item .faq-icon {
+            transition: transform 0.3s;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
         }
 
         /* ============================================
@@ -1321,6 +1629,7 @@
             position: relative;
             overflow: hidden;
             min-height: 100vh;
+            transition: background 0.3s;
         }
 
         .support-page .badge-top {
@@ -1342,7 +1651,7 @@
             font-weight: 900;
             margin-bottom: 16px;
             letter-spacing: -1px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .support-page h1 .highlight {
@@ -1360,14 +1669,15 @@
 
         .content-section-support {
             padding: 60px 0 100px;
-            background: var(--white);
+            background: var(--bg-primary);
+            transition: background 0.3s;
         }
 
         .content-card {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 40px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             margin-bottom: 30px;
             transition: var(--transition);
         }
@@ -1381,7 +1691,7 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 16px;
-            color: var(--dark);
+            color: var(--text-primary);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1396,7 +1706,7 @@
             font-size: 20px;
             font-weight: 600;
             margin: 24px 0 12px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .content-card p {
@@ -1419,13 +1729,13 @@
         }
 
         .content-card ul li strong {
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .content-card .last-updated {
             margin-top: 30px;
             padding: 16px 20px;
-            background: var(--light-gray);
+            background: var(--gray-bg);
             border-radius: 12px;
             color: var(--gray);
             font-size: 14px;
@@ -1438,10 +1748,10 @@
         }
 
         .support-grid .support-item {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 32px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             transition: var(--transition);
         }
 
@@ -1461,7 +1771,7 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 8px;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .support-grid .support-item p {
@@ -1477,10 +1787,11 @@
 
         .status-list li {
             padding: 12px 16px;
-            border-bottom: 1px solid #E2E8F0;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--text-primary);
         }
 
         .status-list li:last-child {
@@ -1530,7 +1841,7 @@
         }
 
         .modal-content {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: var(--radius);
             padding: 40px;
             max-width: 480px;
@@ -1555,11 +1866,11 @@
         .modal-content .form-group input {
             width: 100%;
             padding: 12px 16px;
-            border: 1px solid #E2E8F0;
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             font-size: 1rem;
-            background: var(--white);
-            color: var(--dark);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             transition: var(--transition);
         }
 
@@ -1582,7 +1893,7 @@
         }
 
         .modal-content .modal-close:hover {
-            color: var(--dark);
+            color: var(--text-primary);
             transform: rotate(90deg);
         }
 
@@ -1603,8 +1914,8 @@
             right: 30px;
             padding: 16px 24px;
             border-radius: 12px;
-            background: var(--white);
-            border: 1px solid #E2E8F0;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             display: none;
             align-items: center;
@@ -1655,11 +1966,158 @@
         }
 
         /* ============================================
+           COOKIE CONSENT
+           ============================================ */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            color: white;
+            padding: 20px;
+            z-index: 9998;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        #cookieConsent span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #cookieConsent span a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        #cookieConsent span a:hover {
+            text-decoration: underline;
+        }
+
+        #cookieConsent .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        #cookieConsent .cookie-buttons .btn-accept {
+            padding: 8px 24px;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        #cookieConsent .cookie-buttons .btn-accept:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        #cookieConsent .cookie-buttons .btn-decline {
+            padding: 8px 24px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        #cookieConsent .cookie-buttons .btn-decline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ============================================
+           ASSISTENTE IA FLUTUANTE
+           ============================================ */
+        .ia-chat-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 4px 30px rgba(0, 212, 255, 0.4);
+            z-index: 900;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ia-chat-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .ia-chat-float .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            animation: pulse-ring 1.5s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* ============================================
+           CONTADORES DINÂMICOS
+           ============================================ */
+        .live-counters {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .live-counters .counter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 13px;
+        }
+
+        .live-counters .counter-item i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .live-counters .counter-item strong {
+            color: var(--text-primary);
+        }
+
+        /* ============================================
            BOTÃO VOLTAR AO TOPO
            ============================================ */
         .btn-topo {
             position: fixed;
-            bottom: 30px;
+            bottom: 100px;
             left: 30px;
             width: 50px;
             height: 50px;
@@ -1692,7 +2150,7 @@
         }
 
         /* ============================================
-           FOOTER (ATUALIZADO)
+           FOOTER
            ============================================ */
         .footer {
             padding: 60px 0 30px;
@@ -1867,8 +2325,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr 1fr;
+            .testimonials-track .testimonial-card {
+                min-width: calc(50% - 15px);
             }
 
             .footer-grid {
@@ -1893,14 +2351,14 @@
                 width: 80%;
                 max-width: 320px;
                 height: 100vh;
-                background: var(--white);
+                background: var(--bg-card);
                 flex-direction: column;
                 justify-content: center;
                 padding: 40px;
                 box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
                 transition: var(--transition);
                 gap: 24px;
-                border-left: 1px solid #E2E8F0;
+                border-left: 1px solid var(--border-color);
             }
 
             .nav-menu.active {
@@ -1948,8 +2406,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
+            .testimonials-track .testimonial-card {
+                min-width: 100%;
             }
 
             .section-header h2 {
@@ -1997,6 +2455,44 @@
             .support-grid {
                 grid-template-columns: 1fr;
             }
+
+            .ia-chat-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .btn-topo {
+                bottom: 80px;
+                left: 16px;
+                width: 44px;
+                height: 44px;
+                font-size: 16px;
+            }
+
+            .toast {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                max-width: unset;
+                font-size: 14px;
+                padding: 14px 18px;
+            }
+
+            #cookieConsent {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #cookieConsent .cookie-buttons {
+                justify-content: center;
+            }
+
+            .live-counters {
+                gap: 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2031,27 +2527,15 @@
                 padding: 8px 12px;
                 font-size: 12px;
             }
-
-            .btn-topo {
-                bottom: 80px;
-                left: 16px;
-                width: 44px;
-                height: 44px;
-                font-size: 16px;
-            }
-
-            .toast {
-                bottom: 16px;
-                right: 16px;
-                left: 16px;
-                max-width: unset;
-                font-size: 14px;
-                padding: 14px 18px;
-            }
         }
     </style>
 </head>
 <body>
+
+    <!-- ==========================================
+    PROGRESS BAR
+    ========================================== -->
+    <div id="progress-bar"></div>
 
     <!-- ==========================================
     TOAST NOTIFICATION
@@ -2097,11 +2581,19 @@
                 </button>
                 <p style="text-align:center; font-size:12px; color:var(--gray); margin-top:12px;">
                     Ao clicar, você concorda com nossos
-                    <a href="#" style="color:var(--primary-dark); text-decoration:none;">Termos de Uso</a>
+                    <a href="#" style="color:var(--primary-dark); text-decoration:none;" onclick="mostrarToast('📄 Termos de Uso em breve!', 'info')">Termos de Uso</a>
                 </p>
             </form>
         </div>
     </div>
+
+    <!-- ==========================================
+    ASSISTENTE IA FLUTUANTE
+    ========================================== -->
+    <button class="ia-chat-float" onclick="abrirAssistenteIA()" title="Assistente IA">
+        <span class="pulse-ring"></span>
+        <i class="fas fa-robot"></i>
+    </button>
 
     <!-- ==========================================
     BOTÃO VOLTAR AO TOPO
@@ -2131,6 +2623,11 @@
                 <li><a onclick="showPage('comunidade')" id="nav-comunidade">Comunidade</a></li>
                 <li><a onclick="showPage('documentacao')" id="nav-documentacao">Documentação IA</a></li>
                 <li><a onclick="showPage('status')" id="nav-status">Status</a></li>
+                <li>
+                    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Alternar tema">
+                        <i class="fas fa-moon" id="darkModeIcon"></i>
+                    </button>
+                </li>
                 <li><a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 14px;" onclick="abrirModalTeste()">Teste Grátis</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -2526,45 +3023,64 @@
                     <span class="section-tag"><i class="fas fa-quote-left"></i> Depoimentos</span>
                     <h2>O que nossos clientes dizem sobre a <span style="color: var(--primary-dark);">IA</span></h2>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <div class="testimonials-carousel">
+                    <div class="testimonials-track" id="testimonialsTrack">
+                        <div class="testimonial-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"A IA da CyvroTech prevê com 95% de precisão o que vou vender. Reduzi meu estoque em 30% e aumentei as vendas em 47%!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://ui-avatars.com/api/?name=Carlos+Silva&background=00D4FF&color=0A0E1A" alt="Carlos Silva">
+                                <div>
+                                    <strong>Carlos Silva</strong>
+                                    <span>Rede de Lojas Silva & Cia</span>
+                                </div>
+                            </div>
                         </div>
-                        <p>"A IA da CyvroTech prevê com 95% de precisão o que vou vender. Reduzi meu estoque em 30% e aumentei as vendas em 47%!"</p>
-                        <div class="testimonial-author">
-                            <img src="https://ui-avatars.com/api/?name=Carlos+Silva&background=00D4FF&color=0A0E1A" alt="Carlos Silva">
-                            <div>
-                                <strong>Carlos Silva</strong>
-                                <span>Rede de Lojas Silva & Cia</span>
+                        <div class="testimonial-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"O assistente virtual com IA revolucionou nosso atendimento. Nossos vendedores agora focam em vender, enquanto a IA cuida do resto."</p>
+                            <div class="testimonial-author">
+                                <img src="https://ui-avatars.com/api/?name=Mariana+Oliveira&background=00D4FF&color=0A0E1A" alt="Mariana Oliveira">
+                                <div>
+                                    <strong>Mariana Oliveira</strong>
+                                    <span>Gerente, Fashion Store</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"A detecção de fraudes com IA já nos salvou de prejuízos enormes. É uma segurança que nenhum outro PDV oferece."</p>
+                            <div class="testimonial-author">
+                                <img src="https://ui-avatars.com/api/?name=Rafael+Almeida&background=00D4FF&color=0A0E1A" alt="Rafael Almeida">
+                                <div>
+                                    <strong>Rafael Almeida</strong>
+                                    <span>CEO, TechRetail</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p>"A CyvroTech transformou completamente minha loja. A IA entende meus clientes melhor do que eu mesmo!"</p>
+                            <div class="testimonial-author">
+                                <img src="https://ui-avatars.com/api/?name=Ana+Paula+Santos&background=00D4FF&color=0A0E1A" alt="Ana Paula Santos">
+                                <div>
+                                    <strong>Ana Paula Santos</strong>
+                                    <span>Rede de Farmácias Santos</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"O assistente virtual com IA revolucionou nosso atendimento. Nossos vendedores agora focam em vender, enquanto a IA cuida do resto."</p>
-                        <div class="testimonial-author">
-                            <img src="https://ui-avatars.com/api/?name=Mariana+Oliveira&background=00D4FF&color=0A0E1A" alt="Mariana Oliveira">
-                            <div>
-                                <strong>Mariana Oliveira</strong>
-                                <span>Gerente, Fashion Store</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"A detecção de fraudes com IA já nos salvou de prejuízos enormes. É uma segurança que nenhum outro PDV oferece."</p>
-                        <div class="testimonial-author">
-                            <img src="https://ui-avatars.com/api/?name=Rafael+Almeida&background=00D4FF&color=0A0E1A" alt="Rafael Almeida">
-                            <div>
-                                <strong>Rafael Almeida</strong>
-                                <span>CEO, TechRetail</span>
-                            </div>
-                        </div>
+                    <div class="carousel-controls">
+                        <button onclick="moverCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <button onclick="moverCarousel(1)"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -2691,17 +3207,68 @@
             <div class="container">
                 <div class="content-card">
                     <h2><i class="fas fa-search"></i> Perguntas Frequentes</h2>
-                    <h3>❓ Como faço para abrir o caixa?</h3>
-                    <p>No menu lateral, clique em "Caixa" e depois em "Abrir Caixa". Informe o valor inicial e confirme.</p>
-                    <h3>❓ Como cadastro um novo produto?</h3>
-                    <p>Acesse o módulo "Itens", clique em "Novo Item" e preencha as informações do produto.</p>
-                    <h3>❓ Como funciona a IA de previsão de demanda?</h3>
-                    <p>A IA analisa seu histórico de vendas e prevê quais produtos terão maior saída nos próximos dias.</p>
-                    <h3>❓ Posso usar o sistema offline?</h3>
-                    <p>Sim! O sistema possui modo offline com sincronização automática quando a conexão for restabelecida.</p>
-                    <h3>❓ Como faço para gerar relatórios?</h3>
-                    <p>Acesse o módulo "Relatórios", selecione o período desejado e clique em "Gerar".</p>
+                    
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ Como faço para abrir o caixa?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            No menu lateral, clique em "Caixa" e depois em "Abrir Caixa". Informe o valor inicial e confirme. O sistema registrará automaticamente a abertura.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ Como cadastro um novo produto?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            Acesse o módulo "Itens", clique em "Novo Item" e preencha as informações do produto como nome, preço, quantidade e categoria. Clique em "Salvar" para finalizar.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ Como funciona a IA de previsão de demanda?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            A IA analisa seu histórico de vendas, sazonalidade e tendências de mercado para prever quais produtos terão maior saída nos próximos dias, ajudando você a otimizar seu estoque.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ Posso usar o sistema offline?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim! O sistema possui modo offline com sincronização automática quando a conexão for restabelecida. Todas as vendas são salvas localmente.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ Como faço para gerar relatórios?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            Acesse o módulo "Relatórios", selecione o período desejado, escolha o tipo de relatório e clique em "Gerar". Você pode exportar em PDF ou CSV.
+                        </div>
+                    </div>
+
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span>❓ O sistema é seguro?</span>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            Sim! O sistema utiliza criptografia de ponta a ponta, autenticação JWT, proteção contra ataques CSRF e XSS, além de detecção de fraudes com IA.
+                        </div>
+                    </div>
                 </div>
+
                 <div class="content-card">
                     <h2><i class="fas fa-headset"></i> Suporte</h2>
                     <p>Entre em contato com nossa equipe de suporte:</p>
@@ -2710,6 +3277,11 @@
                         <li><strong>WhatsApp:</strong> (84) 99161-2793</li>
                         <li><strong>Horário:</strong> Segunda a Sexta, 08h às 18h</li>
                     </ul>
+                    <div style="margin-top:16px;">
+                        <a href="#" class="btn-primary" onclick="abrirWhatsApp()">
+                            <i class="fas fa-whatsapp"></i> Falar com Suporte
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2734,7 +3306,13 @@
                         <li><strong>💡 Dicas de Vendas:</strong> Estratégias para aumentar suas vendas.</li>
                         <li><strong>📊 Análise de Dados:</strong> Como usar os relatórios a seu favor.</li>
                         <li><strong>🤖 IA no Varejo:</strong> Casos de uso da inteligência artificial.</li>
+                        <li><strong>🚀 Lançamentos:</strong> Novidades e atualizações do sistema.</li>
                     </ul>
+                    <div style="margin-top:16px;">
+                        <a href="#" class="btn-primary" onclick="mostrarToast('🌐 Fórum disponível em breve!', 'info')">
+                            <i class="fas fa-external-link-alt"></i> Acessar Fórum
+                        </a>
+                    </div>
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-calendar-alt"></i> Eventos e Webinars</h2>
@@ -2742,7 +3320,13 @@
                         <li><strong>📅 Webinar: IA no Varejo</strong> - Toda quinta-feira, 15h</li>
                         <li><strong>📅 Encontro de Empreendedores</strong> - Último sábado do mês</li>
                         <li><strong>📅 Workshop: Otimização de Estoque</strong> - Quinzenalmente</li>
+                        <li><strong>📅 Live: Novidades da IA</strong> - Primeira terça do mês</li>
                     </ul>
+                    <div style="margin-top:16px;">
+                        <a href="#" class="btn-secondary" onclick="mostrarToast('📅 Agenda disponível em breve!', 'info')">
+                            <i class="fas fa-calendar-plus"></i> Ver Agenda Completa
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2765,11 +3349,16 @@
                     <h2><i class="fas fa-brain"></i> Como a IA funciona?</h2>
                     <p>Nossa IA utiliza algoritmos de machine learning para analisar padrões de venda e comportamento do cliente.</p>
                     <h3>🤖 Previsão de Demanda</h3>
-                    <p>Analisa histórico de vendas, sazonalidade e tendências para prever a demanda futura.</p>
+                    <p>Analisa histórico de vendas, sazonalidade e tendências para prever a demanda futura com até 95% de precisão.</p>
                     <h3>👤 Perfil de Cliente</h3>
-                    <p>Identifica padrões de compra e sugere produtos personalizados para cada cliente.</p>
+                    <p>Identifica padrões de compra e sugere produtos personalizados para cada cliente em tempo real.</p>
                     <h3>📊 Análise de Sentimento</h3>
-                    <p>Analisa feedbacks e interações para entender a satisfação do cliente.</p>
+                    <p>Analisa feedbacks e interações para entender a satisfação do cliente e melhorar o atendimento.</p>
+                    <h3>🛡️ Detecção de Fraudes</h3>
+                    <p>Monitora transações em tempo real para identificar comportamentos suspeitos.</p>
+                    <div class="last-updated">
+                        <i class="fas fa-robot"></i> IA treinada com milhões de transações reais
+                    </div>
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-code"></i> API e Integrações</h2>
@@ -2777,10 +3366,14 @@
                         <li><strong>REST API:</strong> Endpoints para integração com outros sistemas.</li>
                         <li><strong>Webhooks:</strong> Notificações em tempo real para eventos do sistema.</li>
                         <li><strong>SDKs:</strong> Bibliotecas para Python, JavaScript e PHP.</li>
+                        <li><strong>Integração com Marketplaces:</strong> Shopee, Mercado Livre e mais.</li>
+                        <li><strong>Conectividade com ERPs:</strong> Integração com principais ERPs do mercado.</li>
                     </ul>
-                    <a href="#" class="btn-primary" style="margin-top:16px;">
-                        <i class="fas fa-external-link-alt"></i> Acessar Documentação Completa
-                    </a>
+                    <div style="margin-top:16px;">
+                        <a href="#" class="btn-primary" onclick="mostrarToast('📚 Documentação completa em breve!', 'info')">
+                            <i class="fas fa-external-link-alt"></i> Acessar Documentação Completa
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2823,8 +3416,9 @@
                 </div>
                 <div class="content-card">
                     <h2><i class="fas fa-bell"></i> Notificações</h2>
+                    <p>Receba alertas sobre o status do sistema em tempo real.</p>
                     <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
-                        <input type="email" placeholder="Seu e-mail" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid #E2E8F0;font-size:16px;min-width:200px;">
+                        <input type="email" placeholder="Seu e-mail" style="flex:1;padding:12px 16px;border-radius:10px;border:1px solid var(--border-color);font-size:16px;min-width:200px;background:var(--bg-primary);color:var(--text-primary);">
                         <button class="btn-primary" style="padding:12px 24px;" onclick="mostrarToast('✅ Inscrição realizada com sucesso!', 'success')">
                             <i class="fas fa-envelope"></i> Inscrever
                         </button>
@@ -2835,7 +3429,21 @@
     </div>
 
     <!-- ==========================================
-    FOOTER (ATUALIZADO COM SEUS TEXTOS)
+    COOKIE CONSENT
+    ========================================== -->
+    <div id="cookieConsent">
+        <span>
+            🍪 Utilizamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa 
+            <a href="#" onclick="mostrarToast('📄 Política de Privacidade em breve!', 'info')">Política de Privacidade</a>.
+        </span>
+        <div class="cookie-buttons">
+            <button class="btn-accept" onclick="aceitarCookies()">Aceitar</button>
+            <button class="btn-decline" onclick="recusarCookies()">Recusar</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+    FOOTER
     ========================================== -->
     <footer class="footer">
         <div class="container">
@@ -2888,6 +3496,26 @@
                 </div>
             </div>
 
+            <!-- CONTADORES DINÂMICOS -->
+            <div class="live-counters">
+                <span class="counter-item">
+                    <i class="fas fa-users"></i>
+                    <strong id="onlineCount">47</strong> online agora
+                </span>
+                <span class="counter-item">
+                    <i class="fas fa-store"></i>
+                    <strong id="totalLojas">5.234</strong> lojas usando
+                </span>
+                <span class="counter-item">
+                    <i class="fas fa-robot"></i>
+                    <strong id="iaRequests">1.2M</strong> consultas IA
+                </span>
+                <span class="counter-item">
+                    <i class="fas fa-star"></i>
+                    <strong>4.9</strong> avaliação média
+                </span>
+            </div>
+
             <div class="footer-bottom">
                 <p>
                     &copy; 2026 CyvroTech PDV<sup>IA</sup>. Todos os direitos reservados.
@@ -2912,18 +3540,15 @@
         // NAVEGAÇÃO ENTRE PÁGINAS
         // ============================================
         function showPage(pageId) {
-            // Esconde todas as páginas
             document.querySelectorAll('.page-section').forEach(function(section) {
                 section.classList.remove('active');
             });
 
-            // Mostra a página selecionada
             var target = document.getElementById('page-' + pageId);
             if (target) {
                 target.classList.add('active');
             }
 
-            // Atualiza link ativo na navbar
             document.querySelectorAll('.nav-menu a').forEach(function(link) {
                 link.classList.remove('active');
                 var linkPage = link.getAttribute('onclick');
@@ -2932,11 +3557,9 @@
                 }
             });
 
-            // Fecha menu mobile
             document.getElementById('navMenu').classList.remove('active');
             document.getElementById('hamburger').classList.remove('active');
 
-            // Scroll para o topo da página
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -2948,7 +3571,6 @@
             document.getElementById('navMenu').classList.toggle('active');
         });
 
-        // Fecha o menu ao clicar em um link (mobile)
         document.querySelectorAll('.nav-menu a').forEach(function(link) {
             link.addEventListener('click', function() {
                 document.getElementById('navMenu').classList.remove('active');
@@ -2967,14 +3589,40 @@
                 navbar.classList.remove('scrolled');
             }
 
-            // Botão "Voltar ao Topo"
             var btnTopo = document.getElementById('btnTopo');
             if (window.scrollY > 400) {
                 btnTopo.classList.add('show');
             } else {
                 btnTopo.classList.remove('show');
             }
+
+            // Progress bar
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + '%';
         });
+
+        // ============================================
+        // DARK MODE
+        // ============================================
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            var icon = document.getElementById('darkModeIcon');
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkModeIcon').className = 'fas fa-sun';
+        }
 
         // ============================================
         // TOAST
@@ -3024,7 +3672,6 @@
             document.body.style.overflow = '';
         }
 
-        // Fecha modal ao clicar fora
         document.getElementById('modalTeste').addEventListener('click', function(e) {
             if (e.target === this) {
                 fecharModalTeste();
@@ -3071,20 +3718,81 @@
         }
 
         // ============================================
+        // ASSISTENTE IA
+        // ============================================
+        function abrirAssistenteIA() {
+            mostrarToast('🤖 Assistente IA: Como posso ajudar você hoje?', 'info');
+            // Aqui você pode abrir um chat real
+        }
+
+        // ============================================
+        // FAQ EXPANSÍVEL
+        // ============================================
+        function toggleFAQ(el) {
+            el.classList.toggle('active');
+        }
+
+        // ============================================
+        // CARROSSEL DE DEPOIMENTOS
+        // ============================================
+        var currentSlide = 0;
+        var track = document.getElementById('testimonialsTrack');
+        var cards = track ? track.querySelectorAll('.testimonial-card') : [];
+        var totalCards = cards.length;
+        var visibleCards = 3;
+        var cardWidth = 0;
+
+        function atualizarCarrossel() {
+            if (!track || cards.length === 0) return;
+            
+            var containerWidth = track.parentElement.offsetWidth;
+            if (window.innerWidth <= 768) {
+                visibleCards = 1;
+            } else if (window.innerWidth <= 1024) {
+                visibleCards = 2;
+            } else {
+                visibleCards = 3;
+            }
+            
+            cardWidth = (containerWidth - (visibleCards - 1) * 30) / visibleCards;
+            
+            cards.forEach(function(card) {
+                card.style.minWidth = cardWidth + 'px';
+                card.style.maxWidth = cardWidth + 'px';
+            });
+            
+            var maxSlide = Math.max(0, totalCards - visibleCards);
+            if (currentSlide > maxSlide) {
+                currentSlide = maxSlide;
+            }
+            
+            var offset = currentSlide * (cardWidth + 30);
+            track.style.transform = 'translateX(-' + offset + 'px)';
+        }
+
+        function moverCarousel(direction) {
+            var maxSlide = Math.max(0, totalCards - visibleCards);
+            currentSlide = Math.max(0, Math.min(maxSlide, currentSlide + direction));
+            atualizarCarrossel();
+        }
+
+        window.addEventListener('resize', atualizarCarrossel);
+        window.addEventListener('load', function() {
+            setTimeout(atualizarCarrossel, 100);
+        });
+
+        // ============================================
         // ATUALIZAR IA (SIMULAÇÃO)
         // ============================================
         function atualizarIA() {
             var btn = document.querySelector('.ia-btn');
+            if (!btn) return;
+            
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Atualizando...';
             btn.disabled = true;
 
             setTimeout(function() {
-                var valores = [
-                    'R$ 13.421',
-                    'R$ 11.987',
-                    'R$ 14.203',
-                    'R$ 12.847'
-                ];
+                var valores = ['R$ 13.421', 'R$ 11.987', 'R$ 14.203', 'R$ 12.847'];
                 var metricVendas = document.getElementById('metricVendas');
                 var atual = metricVendas.textContent;
                 var novo = valores[Math.floor(Math.random() * valores.length)];
@@ -3121,14 +3829,49 @@
         }
 
         // ============================================
-        // INICIALIZAÇÃO DA IA
+        // CONTADORES DINÂMICOS
+        // ============================================
+        function atualizarContadores() {
+            var online = Math.floor(Math.random() * 30) + 35;
+            document.getElementById('onlineCount').textContent = online;
+            
+            var lojas = 5000 + Math.floor(Math.random() * 500);
+            document.getElementById('totalLojas').textContent = lojas.toLocaleString();
+            
+            var requests = 1.2 + (Math.random() * 0.3);
+            document.getElementById('iaRequests').textContent = requests.toFixed(1) + 'M';
+        }
+
+        setInterval(atualizarContadores, 8000);
+
+        // ============================================
+        // COOKIE CONSENT
+        // ============================================
+        function aceitarCookies() {
+            document.getElementById('cookieConsent').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'true');
+            mostrarToast('🍪 Cookies aceitos!', 'success');
+        }
+
+        function recusarCookies() {
+            document.getElementById('cookieConsent').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', 'false');
+            mostrarToast('🍪 Cookies recusados.', 'info');
+        }
+
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookieConsent').style.display = 'flex';
+        }
+
+        // ============================================
+        // INICIALIZAÇÃO
         // ============================================
         function initIA() {
             var progressFill = document.getElementById('progressFill');
             if (progressFill) {
                 progressFill.style.width = '85%';
             }
-            // Atualiza o relógio
+            
             var agora = new Date();
             var hora = String(agora.getHours()).padStart(2, '0');
             var minuto = String(agora.getMinutes()).padStart(2, '0');
@@ -3138,32 +3881,27 @@
             }
         }
 
-        // Executa quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {
             initIA();
+            setTimeout(atualizarCarrossel, 200);
         });
 
         // ============================================
         // ANIMAÇÃO DOS NÚMEROS (ESTATÍSTICAS)
         // ============================================
-        // Observador para animar números quando entrarem em viewport
         if (window.IntersectionObserver) {
             var statsObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         var el = entry.target;
                         var target = el.getAttribute('data-target');
-                        if (target) {
-                            // Se já foi animado, não faz nada
-                            if (el.getAttribute('data-animated') === 'true') return;
-
-                            // Para números com sufixo (K, %, +)
+                        if (target && el.getAttribute('data-animated') !== 'true') {
                             var isK = target.includes('K');
                             var isPercent = target.includes('%');
                             var isPlus = target.includes('+');
                             var num = parseFloat(target.replace(/[K%+]/g, ''));
-
                             if (isK) num = num * 1000;
+                            
                             var duracao = 1500;
                             var inicio = performance.now();
 
@@ -3186,7 +3924,6 @@
                                 if (progress < 1) {
                                     requestAnimationFrame(animarNumero);
                                 } else {
-                                    // Valor final
                                     var finalText = target;
                                     if (isK) {
                                         var kVal = (num / 1000).toFixed(1);
@@ -3216,6 +3953,8 @@
         console.log('🚀 CyvroTech PDV^IA carregado com sucesso!');
         console.log('💡 Sistema de PDV com Inteligência Artificial');
         console.log('📞 Contato: (84) 99161-2793');
+        console.log('🌙 Dark Mode disponível!');
+        console.log('🤖 Assistente IA integrado!');
     </script>
 
 </body>
